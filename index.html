@@ -1,767 +1,525 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIET BCA Day 1 - Python Programming Fundamentals</title>
-  <style>
-    :root {
-      --bg:#f4f7fb; --paper:#fff; --ink:#172033; --muted:#526173; --brand:#2457a6; --brand-dark:#183b72;
-      --teal:#0f766e; --green:#15803d; --amber:#b45309; --rose:#be123c; --line:#dbe4ef; --code:#0f172a;
-      --blue-soft:#eff6ff; --green-soft:#ecfdf5; --amber-soft:#fffbeb; --rose-soft:#fff1f2; --teal-soft:#f0fdfa;
-    }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
-    header{background:#121b2d;color:white;border-bottom:5px solid var(--teal)}
-    .hero,main{max-width:1180px;margin:0 auto}.hero{padding:42px 24px 38px}
-    .tag{display:inline-block;padding:7px 12px;border:1px solid rgba(255,255,255,.28);border-radius:6px;background:rgba(255,255,255,.10);font-weight:700;font-size:14px}
-    h1{max-width:980px;margin:18px 0 12px;font-size:clamp(30px,5vw,54px);line-height:1.12;letter-spacing:0}
-    .hero p{max-width:980px;margin:0;color:#e8eef9;font-size:18px}
-    main{background:var(--paper);padding:26px 24px 90px;box-shadow:0 18px 50px rgba(15,23,42,.08)}
-    nav{position:sticky;top:0;z-index:10;margin:0 -24px 26px;padding:14px 24px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
-    .nav-wrap{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px}
-    nav a{display:inline-flex;align-items:center;min-height:36px;padding:7px 11px;border:1px solid var(--line);border-radius:6px;color:var(--brand-dark);background:#fbfdff;text-decoration:none;font-weight:700;font-size:14px}
-    section{scroll-margin-top:90px}.section-title{margin:42px 0 18px;padding:18px;border-left:6px solid var(--brand);border-radius:8px;background:var(--blue-soft)}
-    .section-title h2{margin:0;font-size:clamp(24px,3vw,34px);line-height:1.2}.section-title p{margin:8px 0 0;color:var(--muted)}
-    h2,h3,h4{line-height:1.28;letter-spacing:0}h3{margin:30px 0 10px;color:var(--brand-dark);font-size:25px}h4{margin:20px 0 8px;color:var(--teal);font-size:19px}
-    p{margin:10px 0;font-size:17px}.card{border:1px solid var(--line);border-radius:8px;background:white;padding:20px;margin:18px 0}
-    .highlight{background:var(--amber-soft);border-left:6px solid var(--amber)}.concept{background:var(--blue-soft);border-left:6px solid var(--brand)}
-    .practice{background:var(--green-soft);border-left:6px solid var(--green)}.story{background:var(--teal-soft);border-left:6px solid var(--teal)}.note{background:var(--rose-soft);border-left:6px solid var(--rose)}
-    .code-title{display:inline-block;margin-top:10px;padding:7px 12px;border-radius:8px 8px 0 0;background:var(--code);color:white;font-family:Consolas,Monaco,monospace;font-weight:700;font-size:13px}
-    pre{margin:0 0 18px;padding:18px;overflow-x:auto;background:var(--code);color:#edf2ff;border-radius:0 8px 8px 8px;font-size:16px;line-height:1.65}
-    code{font-family:Consolas,Monaco,"Courier New",monospace;background:#eef2f7;color:#111827;border-radius:5px;padding:2px 5px}pre code{background:transparent;color:inherit;padding:0}
-    table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:15px}th,td{border:1px solid var(--line);padding:14px;text-align:left;vertical-align:top}
-    th{background:#eaf3ff;color:var(--ink);font-size:16px}td:first-child{width:72px;font-weight:700;color:var(--brand-dark)}
-    .output{background:#111827;color:#f8fafc;border-radius:8px;padding:16px;margin:10px 0 20px;white-space:pre-wrap;font-family:Consolas,Monaco,"Courier New",monospace;font-size:15px}
-    .summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.mini{padding:14px;border:1px solid var(--line);border-radius:8px;background:#fbfdff}
-    ul,ol{padding-left:25px}li{margin:8px 0;font-size:16px}
-    @media(max-width:820px){main{padding:20px 14px 70px}nav{margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px;position:static}.summary-grid{grid-template-columns:1fr}table{font-size:14px}th,td{padding:10px}pre{font-size:14px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIET BCA Day 1 Python Notes</title>
+<style>
+  :root{--navy:#0f2942;--blue:#1a5f9e;--lightblue:#e8f2fb;--accent:#2b8a3e;--warn-bg:#fff4e5;--warn-border:#e8a33d;--info-bg:#e8f2fb;--info-border:#1a5f9e;--err-bg:#fdeaea;--err-border:#c0392b;--code-bg:#0f2942;--code-text:#e8f2fb;--gray:#555;--line:#d7e2ec;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;margin:0;padding:0;color:#20303f;line-height:1.65;background:#fbfcfe;font-size:15.5px;}
+  .page{max-width:980px;margin:0 auto;padding:30px 40px 60px 40px;}
+  .titlepage{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(160deg,var(--navy) 0%,var(--blue) 100%);color:#fff;padding:60px 20px;}
+  .titlepage h1{font-size:42px;margin-bottom:10px;letter-spacing:1px;line-height:1.15;}
+  .titlepage h2{font-size:20px;font-weight:400;color:#cfe4f7;margin-top:0;}
+  .titlepage .badge{margin-top:40px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.35);padding:14px 26px;border-radius:8px;font-size:14px;line-height:1.8;text-align:left;}
+  .titlepage .footer-note{margin-top:50px;font-size:13px;color:#cfe4f7;}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:30px 35px;margin:30px 0 50px 0;}
+  .toc h2{margin-top:0;color:var(--navy);} .toc li{margin-bottom:6px;} .toc a{color:var(--blue);text-decoration:none;}
+  .module-header{background:var(--navy);color:#fff;padding:22px 30px;border-radius:10px;margin:40px 0 25px 0;}
+  .module-header h1{margin:0;font-size:26px;} .module-header p{margin:6px 0 0 0;color:#cfe4f7;font-size:14px;}
+  h2.topic{color:var(--navy);border-bottom:3px solid var(--blue);padding-bottom:6px;margin-top:45px;font-size:21px;}
+  h3.subtopic{color:var(--blue);margin-top:28px;font-size:17px;}
+  h3.practical-title{color:#fff;background:var(--accent);display:inline-block;padding:6px 16px;border-radius:6px;margin-top:20px;font-size:15px;}
+  .box{border-radius:8px;padding:14px 18px;margin:14px 0;font-size:14.5px;} .info{background:var(--info-bg);border-left:5px solid var(--info-border);} .warn{background:var(--warn-bg);border-left:5px solid var(--warn-border);}
+  .box strong.tag{display:block;text-transform:uppercase;font-size:11.5px;letter-spacing:0.5px;margin-bottom:4px;color:var(--gray);}
+  .run-loc{display:inline-block;background:var(--navy);color:#fff;font-size:12px;padding:3px 10px;border-radius:5px 5px 0 0;font-family:monospace;margin-bottom:-2px;}
+  pre{background:var(--code-bg);color:var(--code-text);padding:16px 18px;border-radius:0 8px 8px 8px;overflow-x:auto;font-size:13.5px;margin:0 0 16px 0;line-height:1.5;}
+  code{font-family:"Consolas","Monaco",monospace;} .inline-code{background:#eef3f8;color:#0f2942;padding:2px 6px;border-radius:4px;font-family:"Consolas",monospace;font-size:13.5px;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;} th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;} th{background:var(--navy);color:#fff;} tr:nth-child(even){background:#f4f8fc;}
+  ol.steps li,ul.plain li{margin-bottom:6px;} .summary-box{background:#eef8f0;border:1px solid #bfe3c8;border-left:5px solid var(--accent);padding:16px 20px;border-radius:8px;margin:30px 0 10px 0;}
+  hr.sep{border:none;border-top:1px dashed var(--line);margin:35px 0;}
+  @media(max-width:720px){.page{padding:22px 16px 50px;}.titlepage h1{font-size:32px;} table{font-size:13px;}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <span class="tag">NIET BCA - Python Programming Class</span>
-      <h1>Day 1: Complete Python Beginner Notes with Practical Code</h1>
-      <p>Ye updated learner-friendly version hai. Isme Python ka Day 1 content basics se start hota hai, har topic simple Hinglish me explain hai, har topic ke practical examples hain, output diya gaya hai, aur har code line ka detailed explanation diya gaya hai. Is page ko learner khud bhi padh sakta hai aur class me direct reading ke liye bhi use kiya ja sakta hai.</p>
-    </div>
-  </header>
-  <main>
-    <nav>
-      <div class="nav-wrap">
-        <a href="#plan">Session Plan</a><a href="#programming">Programming</a><a href="#python">Python</a><a href="#interpreter">Interpreter</a><a href="#first-program">First Program</a><a href="#variables">Variables</a><a href="#naming">Naming</a><a href="#datatypes">Data Types</a><a href="#casting">Type Casting</a><a href="#io">Input Output</a><a href="#comments">Comments</a><a href="#syntax">Syntax</a><a href="#practice">Practice</a><a href="#student-notes">Student Notes</a>
-      </div>
-    </nav>
-
-    <section id="plan">
-      <div class="section-title"><h2>Updated Learner Friendly Format</h2><p>Page ko ab clear learner notes style me restructure kiya gaya hai, jisme content student/self-study friendly language me hai.</p></div>
-      <div class="card story">
-        <h3>What Changed in This Version</h3>
-        <p>Is updated version me content ko aise likha gaya hai ki koi bhi beginner learner directly padhkar Python basics samajh sake. Har topic me pehle meaning diya gaya hai, phir real-life use case diya gaya hai, phir practical code diya gaya hai, phir output diya gaya hai, aur uske baad code ki har line ka detailed explanation diya gaya hai.</p>
-        <p>Language simple Hinglish rakhi gayi hai. Technical words jaise variable, data type, interpreter, input, output, type casting aur syntax ko easy examples ke saath explain kiya gaya hai. Isse first-time learner ko bhi code ka purpose samajhne me dikkat nahi hogi.</p>
-        <p>Ye page 5 hours ke session ke according organized hai. Starting me programming mindset build hota hai, beech me Python fundamentals cover hote hain, aur last me learner practice tasks aur student share notes diye gaye hain.</p>
-      </div>
-
-      <div class="section-title"><h2>Complete 5 Hours Session Flow</h2><p>Is flow se 5 hours ka beginner-friendly Python session smoothly complete ho sakta hai.</p></div>
-      <div class="card highlight">
-        <h3>Session Opening Notes</h3>
-        <p>Aaj hum Python programming ka foundation start kar rahe hain. Sabse pehle hum ye samjhenge ki programming hoti kya hai, Python language kyu popular hai, Python interpreter code ko kaise run karta hai, aur Python me first program kaise likhte hain. Uske baad hum variables, naming rules, data types, type casting, input-output, comments, syntax aur practical programs karenge.</p>
-        <p>Learners ko starting me ye clear karna hai ki coding ka matlab ratta maarna nahi hai. Coding ka matlab problem ko step by step sochna hai. Agar hum problem ko small steps me todna seekh gaye, to Python me uska solution likhna easy ho jata hai. Isliye aaj ka session theory plus practical dono rahega.</p>
-      </div>
-      <div class="card story">
-        <h3>How to Study This Page</h3>
-        <p>Is page ko study karte waqt har topic me same flow follow karna hai: pehle topic ka meaning samajhna hai, phir real life example dekhna hai, phir code run karna hai, phir output observe karna hai, aur finally code ki har line ko detail me samajhna hai. Is flow se theory aur practical dono ek saath connect hote hain.</p>
-        <p>Har code example me ye clearly samajhna hai ki kaunsi line data store kar rahi hai, kaunsi line calculation kar rahi hai, kaunsi line user se input le rahi hai, aur kaunsi line output show kar rahi hai. Agar koi learner first time programming padh raha hai, to technical words ko simple meaning ke saath read karna chahiye. Har line ka purpose samajhna coding confidence build karta hai.</p>
-        <p>Real-world connection zaroor samajhna hai. Variables ko student form se connect kar sakte hain, data types ko name-age-marks se connect kar sakte hain, type casting ko user input calculation se connect kar sakte hain, aur print/input ko real applications ke forms and reports se connect kar sakte hain. Jab real use case clear hota hai to topic easily yaad hota hai.</p>
-      </div>
-
-      <div class="summary-grid">
-        <div class="mini"><h4>Part 1</h4><p>Programming, Python, interpreter, first output.</p></div>
-        <div class="mini"><h4>Part 2</h4><p>Variables, naming rules, data types, type checking.</p></div>
-        <div class="mini"><h4>Part 3</h4><p>Type casting, input-output, comments, syntax.</p></div>
-        <div class="mini"><h4>Part 4</h4><p>Real-world practice programs with code explanation.</p></div>
-        <div class="mini"><h4>Part 5</h4><p>Student tasks, recap and homework.</p></div>
-      </div>
-    </section>
-
-    <section id="programming">
-      <div class="section-title"><h2>1. What is Programming?</h2><p>Programming ka matlab computer ko clear, logical, step-by-step instructions dena hota hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Programming ka simple meaning hai computer ko batana ki kya karna hai aur kis order me karna hai. Computer apne aap decide nahi karta. Computer sirf wahi kaam karta hai jo instructions me clearly likha hota hai. Agar instruction correct hai to output correct aayega, aur agar instruction incomplete ya wrong hai to output wrong aayega.</p>
-        <p>Real life me programming ko recipe ki tarah samjho. Agar chai banani hai to steps clear hone chahiye: paani garam karo, chai patti dalo, milk add karo, sugar add karo, boil karo, cup me serve karo. Agar order galat ho gaya ya step miss ho gaya to final result proper nahi milega. Programming me bhi same logic hota hai.</p>
-        <p>Programming ka use marks calculator, billing system, attendance system, website, mobile app, banking system, online shopping, data analysis, automation aur AI tools me hota hai. Aaj hum small examples se start karenge, lekin same concepts future me large projects me use honge.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Human Instructions as Program</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>print("Step 1: Wake up")
-print("Step 2: Brush your teeth")
-print("Step 3: Attend Python class")
-print("Step 4: Practice coding")</code></pre>
-        <h4>Output</h4><div class="output">Step 1: Wake up
+<div class="titlepage">
+  <h1>Python Day 1 Beginner Notes</h1>
+  <h2>Introduction to Programming, Python Basics, Variables, Data Types and Practical Coding</h2>
+  <div class="badge">Language: Simple Hinglish<br>Session Duration: 5 Hours<br>Execution Tool: Jupyter Notebook / VS Code / Python IDLE<br>Format: Theory + Practical + Output + Detailed Code Explanation</div>
+  <div class="footer-note">NIET BCA Python Programming Class</div>
+</div>
+<div class="page">
+  <div class="toc"><h2>Table of Contents</h2><ol><li><a href="#programming">What is Programming?</a></li>
+<li><a href="#python">Introduction to Python</a></li>
+<li><a href="#interpreter">Python Interpreter Basics</a></li>
+<li><a href="#first-program">Writing First Python Program</a></li>
+<li><a href="#variables">Variables in Python</a></li>
+<li><a href="#naming">Naming Rules</a></li>
+<li><a href="#datatypes">Data Types</a></li>
+<li><a href="#casting">Type Casting</a></li>
+<li><a href="#io">Input and Output Handling</a></li>
+<li><a href="#comments">Comments and Syntax</a></li>
+<li><a href="#projects">Complete Practical Projects</a></li>
+<li><a href="#student-notes">Student Share Notes</a></li></ol></div>
+  <div class="module-header"><h1>Day 1 - Python Programming Fundamentals</h1><p>Is page ko reference format ke style me rebuild kiya gaya hai: topic explanation, real use case, practical code, output and detailed line-by-line explanation.</p></div>
+  <h2 id="programming" class="topic">1. What is Programming?</h2>
+<p>Programming ka matlab hota hai computer ko step-by-step instructions dena. Computer khud se decide nahi karta ki kya karna hai. Hum jo instruction code me likhte hain, computer wahi instruction follow karta hai. Agar steps clear hain to output correct milega, aur agar steps wrong hain to result bhi wrong aayega.</p>
+<p>Programming ko daily life ki recipe ki tarah samjho. Chai banane ke liye steps hote hain: paani garam karo, chai patti dalo, doodh dalo, sugar dalo aur boil karo. Agar steps ka order galat ho jaye to chai proper nahi banegi. Same way, program me steps ka sequence bahut important hota hai.</p>
+<p>Beginner ke liye sabse important habit hai problem ko small steps me todna. Pehle socho input kya hai, phir process kya hoga, phir output kya aayega. Ye input-process-output thinking har programming language aur har project me use hoti hai.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Marks calculator, billing system, attendance system, online forms, ATM, websites aur apps sab programming instructions par kaam karte hain. Har jagah computer ko clear steps diye jaate hain.</div>
+<h3 class="practical-title">Practical 1.1 - Daily Routine Steps</h3>
+<p>Is example me hum programming ko simple daily routine steps ke through samjhenge. Ye code dikhata hai ki Python instructions ko top-to-bottom order me execute karta hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>print(&quot;Step 1: Wake up&quot;)
+print(&quot;Step 2: Brush your teeth&quot;)
+print(&quot;Step 3: Attend Python class&quot;)
+print(&quot;Step 4: Practice coding&quot;)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Step 1: Wake up
 Step 2: Brush your teeth
 Step 3: Attend Python class
-Step 4: Practice coding</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>print("Step 1: Wake up")</code></td><td>Ye first instruction screen par show karta hai. <code>print()</code> output display karne ke liye use hota hai. Double quotes ke andar text string hota hai. Python is line ko sabse pehle execute karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>2</td><td><code>print("Step 2: Brush your teeth")</code></td><td>Ye second instruction print karta hai. Isse students samajhte hain ki program me har line ek step hoti hai. Computer line 1 ke baad line 2 execute karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>3</td><td><code>print("Step 3: Attend Python class")</code></td><td>Ye third step show karta hai. Agar sequence change kar denge to output ka order bhi change ho jayega. Programming me order important hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>4</td><td><code>print("Step 4: Practice coding")</code></td><td>Ye final step print karta hai. Is line se learners ko message milta hai ki coding seekhne ke liye practice zaroori hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Calculation Instructions</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>number1 = 10
+Step 4: Practice coding</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>print(&quot;Step 1: Wake up&quot;)</code></td><td>Ye first instruction hai. <code>print()</code> screen par message show karta hai. Double quotes ke andar jo text hai, wahi output me dikhega. Python sabse pehle isi line ko run karega. Isse learner ko samajh aata hai ki program ek ordered list of instructions hota hai.</td></tr>
+<tr><td>2</td><td><code>print(&quot;Step 2: Brush your teeth&quot;)</code></td><td>Ye second instruction hai. Python line 1 complete karne ke baad line 2 execute karta hai. Yahan bhi <code>print()</code> message show kar raha hai. Sequence maintain rehna important hai. Agar line order badlenge to output order bhi change ho jayega.</td></tr>
+<tr><td>3</td><td><code>print(&quot;Step 3: Attend Python class&quot;)</code></td><td>Ye third step print hota hai. Is line se top-to-bottom execution ka concept aur clear hota hai. Computer apne aap step skip nahi karta. Jo order code me likha hai, wahi order output me follow hota hai.</td></tr>
+<tr><td>4</td><td><code>print(&quot;Step 4: Practice coding&quot;)</code></td><td>Ye final step print karta hai. Har <code>print()</code> ke baad Python default new line add karta hai. Isliye output alag-alag lines me aata hai. Practice coding ka message learner ko daily hands-on karne ka reminder bhi deta hai.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 1.2 - Add Two Numbers</h3>
+<p>Is example me programming ka input-process-output model use ho raha hai. Pehle two values store hongi, phir addition hoga, phir result print hoga.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>number1 = 10
 number2 = 20
 total = number1 + number2
-print("Total is:", total)</code></pre>
-        <h4>Output</h4><div class="output">Total is: 30</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>number1 = 10</code></td><td><code>number1</code> variable me 10 store hota hai. Variable container jaisa hota hai jisme data rakha jata hai. Ye first input value hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>number2 = 20</code></td><td><code>number2</code> variable me 20 store hota hai. Dono values alag variables me hain taaki calculation clear rahe.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>total = number1 + number2</code></td><td>Yahan processing ho rahi hai. <code>+</code> addition operator hai. Python 10 aur 20 add karke result <code>total</code> me store karta hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan addition ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>4</td><td><code>print("Total is:", total)</code></td><td>Ye final output show karta hai. Text label output ko readable banata hai aur <code>total</code> ki value 30 print hoti hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="python">
-      <div class="section-title"><h2>2. Introduction to Python</h2><p>Python ek beginner-friendly, powerful, high-level programming language hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Python high-level language hai, iska matlab Python code human language ke close hota hai. Python ka syntax clean aur simple hota hai, isliye beginners ko coding start karne me confidence milta hai. Python readability par focus karta hai, matlab code ko padhna aur samajhna easy hota hai.</p>
-        <p>Python ka use web development, automation, data science, machine learning, artificial intelligence, computer vision, scripting, cybersecurity, cloud automation, DevOps tools aur desktop applications me hota hai. Data Science ke liye Python popular hai kyunki NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn jaise libraries available hain.</p>
-        <p>Learners ko ye samjhana hai ki Python sirf subject nahi hai, Python ek tool hai jisse real-world problems solve kar sakte hain. Agar basics strong honge to future me projects banana easy ho jayega.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Python Use Case Message</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>language = "Python"
-purpose = "Data Science and Machine Learning"
-print(language, "is used for", purpose)</code></pre>
-        <h4>Output</h4><div class="output">Python is used for Data Science and Machine Learning</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>language = "Python"</code></td><td><code>language</code> variable me Python text store hai. Text ko quotes me likhte hain. Variable name clear hai, isliye purpose samajh aata hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>purpose = "Data Science and Machine Learning"</code></td><td>Is variable me Python ka use case store hai. Ye string value hai kyunki ye words ka group hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>print(language, "is used for", purpose)</code></td><td>Ye line variables aur text ko combine karke sentence print karti hai. Comma values ko space ke saath print karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Python Automation Example</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>task = "Generate student report"
+print(&quot;Total is:&quot;, total)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Total is: 30</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>number1 = 10</code></td><td>Yahan <code>number1</code> naam ka variable ban raha hai. Is variable ke andar 10 store ho raha hai. Programming me <code>=</code> ka meaning storage hota hai, mathematics wala equal nahi. Ye first input value hai. Aage calculation me isi value ka use hoga.</td></tr>
+<tr><td>2</td><td><code>number2 = 20</code></td><td>Yahan <code>number2</code> variable me 20 store ho raha hai. Dono numbers ko alag variables me rakhna code ko readable banata hai. Variable name se samajh aa raha hai ki ye second number hai. Aage ye addition me use hoga.</td></tr>
+<tr><td>3</td><td><code>total = number1 + number2</code></td><td>Is line me processing ho rahi hai. Python <code>number1</code> ki value 10 aur <code>number2</code> ki value 20 ko add karta hai. <code>+</code> addition operator hai. Result 30 banta hai aur <code>total</code> variable me store hota hai.</td></tr>
+<tr><td>4</td><td><code>print(&quot;Total is:&quot;, total)</code></td><td>Ye output line hai. Text <code>Total is:</code> label ki tarah kaam karta hai. Comma ke baad <code>total</code> variable ki value print hoti hai. Output readable ban jata hai kyunki user ko pata chalta hai ki 30 total value hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="python" class="topic">2. Introduction to Python</h2>
+<p>Python ek high-level programming language hai. High-level ka matlab hai iska syntax human language ke close hota hai. Python code padhna relatively easy hota hai, isliye beginners ke liye Python ek strong starting language hai.</p>
+<p>Python ka use sirf basic coding me nahi hota. Iska use data science, machine learning, artificial intelligence, web development, automation, scripting, testing, DevOps aur computer vision me hota hai. Python ki libraries isko powerful banati hain.</p>
+<p>Python me readability important hai. Code clean aur understandable hota hai. Jab code readable hota hai, to learner, developer aur team member sab usko easily maintain kar sakte hain.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Data Science me Pandas, NumPy, Matplotlib aur Scikit-learn jaise tools Python par based hain. Automation me Python reports generate kar sakta hai, files manage kar sakta hai aur repetitive work reduce kar sakta hai.</div>
+<h3 class="practical-title">Practical 2.1 - Python Purpose Message</h3>
+<p>Is program me hum variables me Python ka naam aur use case store karke sentence print karenge.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>language = &quot;Python&quot;
+purpose = &quot;Data Science and Machine Learning&quot;
+print(language, &quot;is used for&quot;, purpose)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Python is used for Data Science and Machine Learning</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>language = &quot;Python&quot;</code></td><td>Yahan <code>language</code> variable me <code>Python</code> text store ho raha hai. Text values ko quotes me likhna padta hai. Variable name meaningful hai, isliye clear hai ki isme programming language ka naam hai. Ye string data ka example hai.</td></tr>
+<tr><td>2</td><td><code>purpose = &quot;Data Science and Machine Learning&quot;</code></td><td>Yahan <code>purpose</code> variable me Python ka use case store ho raha hai. Ye value multiple words ka text hai, isliye quotes ke andar likhi gayi hai. Is line se learner samajhta hai ki variable me sentence ya phrase bhi store ho sakta hai.</td></tr>
+<tr><td>3</td><td><code>print(language, &quot;is used for&quot;, purpose)</code></td><td>Ye line variables aur text ko combine karke output sentence banati hai. Comma values ke beech space add karta hai. Pehle <code>language</code> ki value print hoti hai, phir text, phir <code>purpose</code> ki value. Output natural English sentence jaisa dikhta hai.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 2.2 - Automation Use Case</h3>
+<p>Is program me Python automation ka real-world idea dikhaya gaya hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>task = &quot;Generate student report&quot;
 time_saved = 3
-print("Python can automate:", task)
-print("Approx hours saved:", time_saved)</code></pre>
-        <h4>Output</h4><div class="output">Python can automate: Generate student report
-Approx hours saved: 3</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>task = "Generate student report"</code></td><td>Yahan real-world task store hai. Reports manually banana time-consuming hota hai, Python se aise tasks automate ho sakte hain.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>time_saved = 3</code></td><td>Yahan number value store hai. Quotes nahi hain, isliye ye integer hai. Ye batata hai ki automation se approx 3 hours save ho sakte hain.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>print("Python can automate:", task)</code></td><td>Ye line batati hai ki Python kis task ko automate kar sakta hai. Text label aur variable saath print ho rahe hain.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>4</td><td><code>print("Approx hours saved:", time_saved)</code></td><td>Ye line saved hours show karti hai. Automation ka main benefit time saving hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="interpreter">
-      <div class="section-title"><h2>3. Python Interpreter Basics</h2><p>Interpreter Python code ko line by line read, understand aur execute karta hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Python interpreter ek software hota hai jo Python code ko run karta hai. Jab hum program run karte hain, interpreter first line read karta hai, usko execute karta hai, phir next line par jata hai. Agar kisi line me error hai, interpreter error message show karta hai.</p>
-        <p>Interpreter ka benefit ye hai ki students quickly code likhkar output dekh sakte hain. Python shell, terminal, VS Code aur Jupyter Notebook me code run kar sakte hain. Jupyter Notebook beginners ke liye useful hota hai kyunki code cell by cell run hota hai aur output same jagah dikhta hai.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Top to Bottom Execution</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>print("Line 1 executed")
-print("Line 2 executed")
-print("Line 3 executed")</code></pre>
-        <h4>Output</h4><div class="output">Line 1 executed
+print(&quot;Python can automate:&quot;, task)
+print(&quot;Approx hours saved:&quot;, time_saved)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Python can automate: Generate student report
+Approx hours saved: 3</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>task = &quot;Generate student report&quot;</code></td><td>Yahan ek real-world task string ke form me store ho raha hai. Student report manually banana time-consuming ho sakta hai. Python is type ke repetitive task ko automate kar sakta hai. Variable ka naam task clear purpose show karta hai.</td></tr>
+<tr><td>2</td><td><code>time_saved = 3</code></td><td>Yahan number value store hai. Quotes nahi hain, isliye Python isko integer samjhega. Ye value batati hai ki automation se approx 3 hours save ho sakte hain. Number values calculation aur comparison me use ho sakti hain.</td></tr>
+<tr><td>3</td><td><code>print(&quot;Python can automate:&quot;, task)</code></td><td>Ye line automation task ko output me show karti hai. Label user ko context deta hai. Variable <code>task</code> ki actual value print hoti hai. Isse output clear aur meaningful ban jata hai.</td></tr>
+<tr><td>4</td><td><code>print(&quot;Approx hours saved:&quot;, time_saved)</code></td><td>Ye line saved time print karti hai. <code>time_saved</code> variable ki value 3 hai, isliye output me 3 dikhta hai. Real projects me aise numbers productivity reports me use ho sakte hain.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="interpreter" class="topic">3. Python Interpreter Basics</h2>
+<p>Python interpreter wo software hai jo Python code ko run karta hai. Jab program execute hota hai, interpreter code ko line by line read karta hai aur instructions perform karta hai.</p>
+<p>Agar code correct hai to output milta hai. Agar code me mistake hai, jaise spelling error, missing quote ya wrong syntax, to interpreter error message deta hai. Error message ko read karna debugging ka first step hota hai.</p>
+<p>Python shell, terminal, VS Code aur Jupyter Notebook me code run ho sakta hai. Beginners ke liye Jupyter Notebook useful hai kyunki code cell by cell run hota hai aur output same jagah dikhta hai.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Interpreter ka concept samajhne se debugging easy hoti hai. Jab output expected nahi aata, learner check kar sakta hai ki kis line par logic ya syntax issue hai.</div>
+<h3 class="practical-title">Practical 3.1 - Line by Line Execution</h3>
+<p>Is example me interpreter ka top-to-bottom execution clear hota hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>print(&quot;Line 1 executed&quot;)
+print(&quot;Line 2 executed&quot;)
+print(&quot;Line 3 executed&quot;)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Line 1 executed
 Line 2 executed
-Line 3 executed</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>print("Line 1 executed")</code></td><td>Interpreter sabse pehle line 1 run karta hai, isliye ye output first dikhta hai. Python normal flow me top to bottom chalta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>2</td><td><code>print("Line 2 executed")</code></td><td>Line 1 complete hone ke baad line 2 execute hoti hai. Isse sequence ka concept clear hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>3</td><td><code>print("Line 3 executed")</code></td><td>Finally line 3 execute hoti hai. Output ka order code ke order par depend karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Interpreter Solves Expression</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>result = 5 + 3 * 2
-print("Result:", result)</code></pre>
-        <h4>Output</h4><div class="output">Result: 11</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>result = 5 + 3 * 2</code></td><td>Interpreter expression solve karta hai. Python math precedence follow karta hai. Multiplication pehle hoti hai: 3 * 2 = 6, phir 5 + 6 = 11.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan addition, multiplication ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>2</td><td><code>print("Result:", result)</code></td><td>Ye calculated value print karta hai. <code>result</code> variable me 11 store hai, isliye output 11 aata hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="first-program">
-      <div class="section-title"><h2>4. Writing First Python Program</h2><p>First program output, strings aur print function ka confidence deta hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Python me output dikhane ke liye <code>print()</code> function use hota hai. Function ek ready-made tool hota hai jo specific kaam karta hai. <code>print()</code> ka kaam hai text, number, variable ya expression ko screen par display karna.</p>
-        <p>First program me syntax par dhyan dena zaroori hai: function name correct ho, brackets complete ho, string quotes me ho, aur code line proper ho. Agar bracket ya quote missing hua to syntax error aa sakta hai.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Hello Program</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>print("Hello Learners")
-print("Welcome to Python Programming")</code></pre>
-        <h4>Output</h4><div class="output">Hello Learners
-Welcome to Python Programming</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>print("Hello Learners")</code></td><td><code>print()</code> message display karta hai. Quotes ke andar jo text hai wo exactly output me show hota hai. Ye learners ko greeting message show karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>2</td><td><code>print("Welcome to Python Programming")</code></td><td>Ye second output line print karti hai. Har <code>print()</code> by default new line me output deta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Print Text and Numbers</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>print("Python Batch:", 1)
-print("Total Students:", 45)
-print("Class Duration:", "5 hours")</code></pre>
-        <h4>Output</h4><div class="output">Python Batch: 1
+Line 3 executed</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>print(&quot;Line 1 executed&quot;)</code></td><td>Interpreter sabse pehle line 1 execute karta hai. Output me line 1 ka message pehle aata hai. Ye show karta hai ki Python normal condition me top-to-bottom flow follow karta hai. Har line ka order important hota hai.</td></tr>
+<tr><td>2</td><td><code>print(&quot;Line 2 executed&quot;)</code></td><td>Line 1 complete hone ke baad line 2 run hoti hai. Isse learner ko sequence ka concept samajh aata hai. Python bina reason line skip nahi karta. Code ka order output ka order decide karta hai.</td></tr>
+<tr><td>3</td><td><code>print(&quot;Line 3 executed&quot;)</code></td><td>Ye third line last me execute hoti hai. Output me bhi ye third position par dikhti hai. Is practical se execution flow visually clear hota hai. Future me conditions aur loops isi flow ko control karenge.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 3.2 - Expression Execution</h3>
+<p>Interpreter expressions ko solve karke result variable me store kar sakta hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>result = 5 + 3 * 2
+print(&quot;Result:&quot;, result)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Result: 11</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>result = 5 + 3 * 2</code></td><td>Python expression solve karte waqt mathematical precedence follow karta hai. Multiplication pehle hoti hai, isliye <code>3 * 2</code> ka result 6 hota hai. Phir 5 add hota hai, final result 11 banta hai. Ye result <code>result</code> variable me store hota hai.</td></tr>
+<tr><td>2</td><td><code>print(&quot;Result:&quot;, result)</code></td><td>Ye line calculated value print karti hai. Text label <code>Result:</code> output ka meaning clear karta hai. <code>result</code> variable ke andar 11 store hai. Isliye output me <code>Result: 11</code> dikhta hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="first-program" class="topic">4. Writing First Python Program</h2>
+<p>First Python program ka purpose hota hai Python environment test karna aur output samajhna. Python me output ke liye <code>print()</code> function use hota hai.</p>
+<p><code>print()</code> ek built-in function hai. Built-in ka matlab ye Python me already available hota hai. Iske brackets ke andar text, number, variable ya expression diya ja sakta hai.</p>
+<p>First program me quotes, brackets aur spelling par dhyan dena chahiye. Agar quote ya bracket missing ho gaya to syntax error aa sakta hai.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>First program se learner ko confidence milta hai ki Python code run ho raha hai aur screen par output aa raha hai.</div>
+<h3 class="practical-title">Practical 4.1 - Hello Learners</h3>
+<p>Ye first output program hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>print(&quot;Hello Learners&quot;)
+print(&quot;Welcome to Python Programming&quot;)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Hello Learners
+Welcome to Python Programming</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>print(&quot;Hello Learners&quot;)</code></td><td><code>print()</code> function screen par message show karta hai. Quotes ke andar text string hota hai. Output exactly wahi text show karta hai. Ye beginner ka first visible Python output hota hai.</td></tr>
+<tr><td>2</td><td><code>print(&quot;Welcome to Python Programming&quot;)</code></td><td>Ye second message print karta hai. Python har <code>print()</code> ke baad new line add karta hai. Isliye output alag line me dikhta hai. Multiple print statements se multiple messages show kar sakte hain.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 4.2 - Print Text and Numbers</h3>
+<p>Is example me text aur number ek saath print honge.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>print(&quot;Python Batch:&quot;, 1)
+print(&quot;Total Students:&quot;, 45)
+print(&quot;Class Duration:&quot;, &quot;5 hours&quot;)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Python Batch: 1
 Total Students: 45
-Class Duration: 5 hours</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>print("Python Batch:", 1)</code></td><td>Text aur number saath print ho rahe hain. Comma multiple values print karne ke liye use hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>2</td><td><code>print("Total Students:", 45)</code></td><td>Label aur value saath print ho rahe hain. Label se output ka meaning clear hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>3</td><td><code>print("Class Duration:", "5 hours")</code></td><td><code>"5 hours"</code> string hai kyunki number ke saath word bhi hai. Isliye quotes use hue hain.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="variables">
-      <div class="section-title"><h2>5. Variables in Python</h2><p>Variable data store karne ke liye named container hota hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Variable ko ek box ki tarah samjho. Box par naam likha hota hai aur box ke andar value rakhi hoti hai. Program me jab hume kisi data ko baar-baar use karna hota hai, to hum usko variable me store kar dete hain. Example: student name, age, marks, city, course, fees, discount, total bill, percentage.</p>
-        <p>Python me variable banane ke liye pehle variable ka naam, phir <code>=</code>, phir value likhte hain. Programming me <code>=</code> assignment operator hai. Right side wali value left side wale variable me store hoti hai. Variable ki value baad me change bhi ho sakti hai.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Student Profile</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>student_name = "Aman"
+Class Duration: 5 hours</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>print(&quot;Python Batch:&quot;, 1)</code></td><td>Yahan text label aur number saath print ho rahe hain. Comma values ko separate karta hai. Python output me automatic space add karta hai. Isse output readable banta hai.</td></tr>
+<tr><td>2</td><td><code>print(&quot;Total Students:&quot;, 45)</code></td><td>Yahan total students ka number print hota hai. Label ke bina sirf 45 ka meaning clear nahi hota. Label use karne se user ko value ka context milta hai.</td></tr>
+<tr><td>3</td><td><code>print(&quot;Class Duration:&quot;, &quot;5 hours&quot;)</code></td><td><code>5 hours</code> quotes me hai kyunki number ke saath word bhi hai. Isliye ye string hai. Text aur variable values ko print ke andar combine karna output formatting ka basic part hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="variables" class="topic">5. Variables in Python</h2>
+<p>Variable ek named container hota hai jisme value store hoti hai. Jaise ek box par label laga hota hai aur box ke andar item hota hai, waise hi variable ka naam hota hai aur uske andar data hota hai.</p>
+<p>Python me variable banane ke liye variable name, assignment operator <code>=</code>, aur value likhte hain. Example: <code>student_name = "Aman"</code>. Yahan right side ki value left side ke variable me store hoti hai.</p>
+<p>Variable ka benefit ye hai ki data ko baar-baar use kar sakte hain. Agar value change karni ho to variable update kar sakte hain. Real programs me variables ke bina data manage karna difficult hota hai.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Student form, marks calculator, shopping bill, login system, fee receipt aur data analysis me variables ka use hota hai.</div>
+<h3 class="practical-title">Practical 5.1 - Student Profile</h3>
+<p>Student details variables me store karte hain.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>student_name = &quot;Aman&quot;
 student_age = 18
-student_city = "Hyderabad"
-print("Name:", student_name)
-print("Age:", student_age)
-print("City:", student_city)</code></pre>
-        <h4>Output</h4><div class="output">Name: Aman
+student_city = &quot;Hyderabad&quot;
+print(&quot;Name:&quot;, student_name)
+print(&quot;Age:&quot;, student_age)
+print(&quot;City:&quot;, student_city)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Name: Aman
 Age: 18
-City: Hyderabad</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>student_name = "Aman"</code></td><td>Student ka name store ho raha hai. Name text hai, isliye quotes me likha gaya hai. Variable name meaningful hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>student_age = 18</code></td><td>Age number ke form me store hai. Quotes nahi hain, isliye Python isko integer samjhega.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>student_city = "Hyderabad"</code></td><td>City text value hai, isliye quotes use hue hain. Student profile systems me city string hoti hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>4-6</td><td><code>print(...)</code></td><td>Print lines stored values ko labels ke saath show karti hain. Label output ko readable banata hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Updating Variable</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>score = 50
-print("Old Score:", score)
+City: Hyderabad</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>student_name = &quot;Aman&quot;</code></td><td>Yahan student ka name variable me store ho raha hai. Name text hai, isliye quotes me likha gaya hai. Variable name meaningful hai. Isse code padhkar clear hota hai ki is variable me student ka naam hai.</td></tr>
+<tr><td>2</td><td><code>student_age = 18</code></td><td>Yahan age number ke form me store hai. Quotes nahi hain, isliye Python isko integer treat karega. Age future me calculation ya comparison me use ho sakti hai.</td></tr>
+<tr><td>3</td><td><code>student_city = &quot;Hyderabad&quot;</code></td><td>City text value hai, isliye quotes use hue hain. Student profile me city, name, course jaise fields string hote hain. Variable readable hai.</td></tr>
+<tr><td>4-6</td><td><code>print(...)</code></td><td>Ye lines stored values ko labels ke saath print karti hain. Labels output ko user-friendly banate hain. Variable ki actual value print hoti hai, variable ka naam nahi.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 5.2 - Update Variable Value</h3>
+<p>Variable ki value program ke flow me update ho sakti hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>score = 50
+print(&quot;Old Score:&quot;, score)
 score = 75
-print("New Score:", score)</code></pre>
-        <h4>Output</h4><div class="output">Old Score: 50
-New Score: 75</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>score = 50</code></td><td><code>score</code> variable me initial value 50 store hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>print("Old Score:", score)</code></td><td>Current value 50 print hoti hai. Ye old score dikhata hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>3</td><td><code>score = 75</code></td><td>Same variable me new value 75 assign ho rahi hai. Old value replace ho jati hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>4</td><td><code>print("New Score:", score)</code></td><td>Updated value print hoti hai. Isliye output me 75 aata hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="naming">
-      <div class="section-title"><h2>6. Naming Rules in Python</h2><p>Variable names correct aur meaningful hone chahiye.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Variable name letter ya underscore se start ho sakta hai, number se start nahi ho sakta. Variable name ke beech me space allowed nahi hota. Special symbols jaise hyphen, @, # use nahi karne chahiye. Python case-sensitive hai, matlab <code>name</code> aur <code>Name</code> different variables hain.</p>
-        <p>Best practice ye hai ki variable names meaningful rakho. <code>student_marks</code>, <code>total_bill</code>, <code>course_fee</code>, <code>user_age</code> jaise names real projects me helpful hote hain. Meaningful names se code explain karna easy hota hai.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Good Variable Names</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>student_name = "Riya"
+print(&quot;New Score:&quot;, score)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Old Score: 50
+New Score: 75</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>score = 50</code></td><td>Initial score 50 store hota hai. Variable ek box jaisa hai jisme abhi 50 value rakhi gayi hai.</td></tr>
+<tr><td>2</td><td><code>print(&quot;Old Score:&quot;, score)</code></td><td>Ye current value print karta hai. Is moment par score 50 hai, isliye output old score 50 dikhata hai.</td></tr>
+<tr><td>3</td><td><code>score = 75</code></td><td>Same variable me new value assign ho rahi hai. Old value replace ho jati hai. Variable update ka concept counters, scores aur balances me use hota hai.</td></tr>
+<tr><td>4</td><td><code>print(&quot;New Score:&quot;, score)</code></td><td>Ye updated value print karta hai. Ab score 75 hai, isliye output new score 75 dikhta hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="naming" class="topic">6. Naming Rules in Python</h2>
+<p>Variable names ke rules follow karne zaroori hain. Variable name letter ya underscore se start ho sakta hai, number se start nahi ho sakta.</p>
+<p>Variable name me space allowed nahi hota. Hyphen jaise symbols avoid karne chahiye. Python case-sensitive hai, matlab <code>name</code> aur <code>Name</code> different variables hain.</p>
+<p>Best practice ye hai ki names meaningful rakhe jaayein. <code>student_marks</code>, <code>total_bill</code>, <code>course_fee</code> jaise names code ko readable banate hain.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Large projects me meaningful names code maintain karne me help karte hain. Team me kaam karte waqt readable code bahut important hota hai.</div>
+<h3 class="practical-title">Practical 6.1 - Good Variable Names</h3>
+<p>Meaningful variable names use karna good practice hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>student_name = &quot;Riya&quot;
 total_marks = 450
 course_fee = 15000
 print(student_name)
 print(total_marks)
 print(course_fee)</code></pre>
-        <h4>Output</h4><div class="output">Riya
+<div class="run-loc">Output</div>
+<pre><code>Riya
 450
-15000</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>student_name = "Riya"</code></td><td>Variable name meaningful hai aur underscore use hua hai. Words separate karne ke liye underscore common practice hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>total_marks = 450</code></td><td>Naam clearly batata hai ki total marks store hain. Code padhne wale ko guess nahi karna padta.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>course_fee = 15000</code></td><td>Course fee store hoti hai. Meaningful name se code self-explanatory ban raha hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>4-6</td><td><code>print(...)</code></td><td>Print lines variables ki values show karti hain. Variable names clear hone se explanation easy hoti hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Case Sensitivity</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>name = "Aman"
-Name = "Rohan"
+15000</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>student_name = &quot;Riya&quot;</code></td><td>Variable name clearly batata hai ki value student ka naam hai. Underscore words ko separate karta hai. Ye Python naming convention me common hai.</td></tr>
+<tr><td>2</td><td><code>total_marks = 450</code></td><td>Naam se clear hai ki total marks store ho rahe hain. Meaningful name future reading aur debugging me help karta hai.</td></tr>
+<tr><td>3</td><td><code>course_fee = 15000</code></td><td>Course fee number value ke roop me store hai. Variable name clear hone se code self-explanatory ban jata hai.</td></tr>
+<tr><td>4-6</td><td><code>print(...)</code></td><td>Ye lines values print karti hain. Jab names meaningful hote hain, code explanation aur maintenance dono easy hote hain.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 6.2 - Case Sensitivity</h3>
+<p>Python uppercase aur lowercase ko different maanta hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>name = &quot;Aman&quot;
+Name = &quot;Rohan&quot;
 print(name)
 print(Name)</code></pre>
-        <h4>Output</h4><div class="output">Aman
-Rohan</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>name = "Aman"</code></td><td>Lowercase <code>name</code> variable me Aman store hai. Python exact case follow karta hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>Name = "Rohan"</code></td><td>Capital N wala <code>Name</code> alag variable hai. Ye <code>name</code> se different hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>print(name)</code></td><td>Lowercase variable ki value print hoti hai, output Aman aata hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>4</td><td><code>print(Name)</code></td><td>Capital N variable ki value print hoti hai, output Rohan aata hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="datatypes">
-      <div class="section-title"><h2>7. Data Types: int, float, str, bool</h2><p>Data type batata hai ki variable ke andar kis nature ka data store hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p><code>int</code> whole numbers ke liye hota hai, jaise age, count, quantity. <code>float</code> decimal numbers ke liye hota hai, jaise price, percentage, temperature. <code>str</code> text ke liye hota hai, jaise name, city, course. <code>bool</code> true/false value ke liye hota hai, jaise pass/fail, active/inactive.</p>
-        <p>Data type samajhna important hai kyunki operations data type ke according behave karte hain. Do numbers add honge to addition hoga, do strings add hongi to text join hoga. Data type check karne ke liye <code>type()</code> function use hota hai.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Check Data Types</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>age = 20
+<div class="run-loc">Output</div>
+<pre><code>Aman
+Rohan</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>name = &quot;Aman&quot;</code></td><td>Lowercase <code>name</code> variable me Aman store hai. Python exact spelling aur case follow karta hai.</td></tr>
+<tr><td>2</td><td><code>Name = &quot;Rohan&quot;</code></td><td>Capital N wala <code>Name</code> alag variable hai. Ye lowercase <code>name</code> se same nahi hai.</td></tr>
+<tr><td>3</td><td><code>print(name)</code></td><td>Lowercase variable ki value print hoti hai. Output Aman aata hai.</td></tr>
+<tr><td>4</td><td><code>print(Name)</code></td><td>Capital N variable ki value print hoti hai. Output Rohan aata hai. Isse case sensitivity clear hoti hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="datatypes" class="topic">7. Data Types: int, float, str, bool</h2>
+<p>Data type batata hai value kis nature ki hai. <code>int</code> whole number ke liye, <code>float</code> decimal ke liye, <code>str</code> text ke liye, aur <code>bool</code> true/false ke liye use hota hai.</p>
+<p>Data type important hai kyunki operation type ke according behave karta hai. Number plus number addition karta hai, string plus string text join kar sakti hai.</p>
+<p>Data type check karne ke liye <code>type()</code> function use hota hai. Ye beginner ke liye debugging me helpful hota hai.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Name, city aur course string hote hain. Age aur quantity int hote hain. Price aur percentage float hote hain. Pass/fail bool ho sakta hai.</div>
+<h3 class="practical-title">Practical 7.1 - Check Data Types</h3>
+<p>Different values ka type check karte hain.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>age = 20
 percentage = 86.5
-name = "Priya"
+name = &quot;Priya&quot;
 is_passed = True
 print(type(age))
 print(type(percentage))
 print(type(name))
 print(type(is_passed))</code></pre>
-        <h4>Output</h4><div class="output">&lt;class 'int'&gt;
-&lt;class 'float'&gt;
-&lt;class 'str'&gt;
-&lt;class 'bool'&gt;</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>age = 20</code></td><td>Whole number store hai, isliye Python isko integer samjhega.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>percentage = 86.5</code></td><td>Decimal value store hai, isliye ye float type hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>name = "Priya"</code></td><td>Text value quotes me hai, isliye ye string hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>4</td><td><code>is_passed = True</code></td><td><code>True</code> boolean value hai. Boolean true/false decisions ke liye use hota hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>5-8</td><td><code>print(type(...))</code></td><td><code>type()</code> variable ka data type batata hai, aur <code>print()</code> usko screen par show karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Same Value, Different Types</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>roll_number = 101
-roll_number_text = "101"
+<div class="run-loc">Output</div>
+<pre><code>&lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;float&#x27;&gt;
+&lt;class &#x27;str&#x27;&gt;
+&lt;class &#x27;bool&#x27;&gt;</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>age = 20</code></td><td>20 whole number hai, isliye integer type hoga. Age jaise values int me store ho sakti hain.</td></tr>
+<tr><td>2</td><td><code>percentage = 86.5</code></td><td>86.5 decimal value hai, isliye float type hoga. Percentage decimal me aa sakti hai.</td></tr>
+<tr><td>3</td><td><code>name = &quot;Priya&quot;</code></td><td>Name text hai, isliye string type hoga. Text values quotes me likhi jaati hain.</td></tr>
+<tr><td>4</td><td><code>is_passed = True</code></td><td>True boolean value hai. Boolean true/false status ke liye use hota hai.</td></tr>
+<tr><td>5-8</td><td><code>print(type(...))</code></td><td><code>type()</code> har variable ka data type return karta hai. <code>print()</code> us type ko screen par show karta hai.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 7.2 - Same Value Different Type</h3>
+<p>Same looking value ka type different ho sakta hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>roll_number = 101
+roll_number_text = &quot;101&quot;
 print(roll_number, type(roll_number))
 print(roll_number_text, type(roll_number_text))</code></pre>
-        <h4>Output</h4><div class="output">101 &lt;class 'int'&gt;
-101 &lt;class 'str'&gt;</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>roll_number = 101</code></td><td>101 quotes ke bina hai, isliye ye integer hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>roll_number_text = "101"</code></td><td>101 quotes ke andar hai, isliye ye string hai. Dikhne me same hai but type different hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>print(roll_number, type(roll_number))</code></td><td>Value aur type dono print hote hain. Output me integer type show hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>4</td><td><code>print(roll_number_text, type(roll_number_text))</code></td><td>Second variable ka type string show hota hai. Ye type casting samajhne me helpful hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 3 - Boolean Status</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>is_registered = True
-has_paid_fee = False
-print("Registered:", is_registered)
-print("Fee Paid:", has_paid_fee)</code></pre>
-        <h4>Output</h4><div class="output">Registered: True
-Fee Paid: False</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>is_registered = True</code></td><td>Ye boolean variable hai jo batata hai student registered hai. <code>is_</code> prefix boolean ke liye readable hota hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>has_paid_fee = False</code></td><td>Ye variable batata hai fee paid nahi hai. <code>False</code> ka F capital hona chahiye.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3-4</td><td><code>print(...)</code></td><td>Boolean status output me show hota hai. Real apps me boolean decision making ke liye use hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="casting">
-      <div class="section-title"><h2>8. Type Casting</h2><p>Type casting ka matlab ek data type ko dusre data type me convert karna hota hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Python me user se jo input aata hai wo by default string hota hai. Agar user age 20 enter karta hai, tab bhi <code>input()</code> usko <code>"20"</code> string ke form me laata hai. Agar hume calculation karni hai, to string ko number me convert karna padega. Isi process ko type casting bolte hain.</p>
-        <p>Common casting functions hain <code>int()</code>, <code>float()</code>, <code>str()</code> aur <code>bool()</code>. <code>int()</code> whole number banata hai, <code>float()</code> decimal number banata hai, <code>str()</code> text banata hai. Wrong value cast karne par error aa sakta hai, jaise <code>int("abc")</code>.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - String to Integer</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>age_text = "20"
+<div class="run-loc">Output</div>
+<pre><code>101 &lt;class &#x27;int&#x27;&gt;
+101 &lt;class &#x27;str&#x27;&gt;</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>roll_number = 101</code></td><td>Quotes nahi hain, isliye 101 integer hai. Is par calculation possible hai.</td></tr>
+<tr><td>2</td><td><code>roll_number_text = &quot;101&quot;</code></td><td>Quotes hain, isliye 101 string hai. Ye dikhne me number hai, but Python isko text treat karega.</td></tr>
+<tr><td>3</td><td><code>print(roll_number, type(roll_number))</code></td><td>Value aur type dono print hote hain. Output me int type show hota hai.</td></tr>
+<tr><td>4</td><td><code>print(roll_number_text, type(roll_number_text))</code></td><td>Second value ka type str show hota hai. Ye type casting ki need samjhata hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="casting" class="topic">8. Type Casting</h2>
+<p>Type casting ka matlab ek data type ko dusre data type me convert karna. User input by default string hota hai, chahe user number hi kyu na enter kare.</p>
+<p>Agar input value par calculation karni hai, to use <code>int()</code> ya <code>float()</code> se number me convert karna padta hai.</p>
+<p>Common casting functions hain <code>int()</code>, <code>float()</code>, <code>str()</code> aur <code>bool()</code>. Wrong conversion error de sakta hai, jaise <code>int("abc")</code>.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Forms, calculators, billing systems aur marks programs me input values ko number me convert karna common requirement hai.</div>
+<h3 class="practical-title">Practical 8.1 - String to Integer</h3>
+<p>String number ko integer me convert karte hain.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>age_text = &quot;20&quot;
 age_number = int(age_text)
 print(age_number + 5)</code></pre>
-        <h4>Output</h4><div class="output">25</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>age_text = "20"</code></td><td>20 quotes ke andar hai, isliye ye string hai. Dikhne me number hai but Python text treat karega.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>age_number = int(age_text)</code></td><td><code>int()</code> string <code>"20"</code> ko integer 20 me convert karta hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>print(age_number + 5)</code></td><td>Ab value integer hai, isliye 5 add ho sakta hai. Output 25 aata hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Quantity Input</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>quantity = int(input("Enter quantity: "))
+<div class="run-loc">Output</div>
+<pre><code>25</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>age_text = &quot;20&quot;</code></td><td>20 quotes ke andar hai, isliye ye string hai. Dikhne me number hai, but Python text treat karega.</td></tr>
+<tr><td>2</td><td><code>age_number = int(age_text)</code></td><td><code>int()</code> string <code>"20"</code> ko integer 20 me convert karta hai. Converted value new variable me store hoti hai.</td></tr>
+<tr><td>3</td><td><code>print(age_number + 5)</code></td><td>Ab value integer hai, isliye 5 add ho sakta hai. Output 25 aata hai. Conversion ke bina calculation proper nahi hoti.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 8.2 - Quantity and Price</h3>
+<p>Input value ko integer me convert karke bill calculate karte hain.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>quantity = int(input(&quot;Enter quantity: &quot;))
 price = 50
 total = quantity * price
-print("Total amount:", total)</code></pre>
-        <h4>Sample Output</h4><div class="output">Enter quantity: 3
-Total amount: 150</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>quantity = int(input("Enter quantity: "))</code></td><td>User se quantity li ja rahi hai. <code>input()</code> string return karta hai, isliye <code>int()</code> se integer me convert kiya gaya hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko integer me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>2</td><td><code>price = 50</code></td><td>Price fixed number hai. Isko variable me store kiya gaya hai taaki code readable ho.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>total = quantity * price</code></td><td><code>*</code> multiplication operator hai. Quantity aur price multiply hoke total amount banate hain.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan multiplication ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>4</td><td><code>print("Total amount:", total)</code></td><td>Final calculated amount print hota hai. Label se output samajhna easy hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 3 - Float Casting</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>marks = float(input("Enter marks: "))
-bonus = 2.5
-final_marks = marks + bonus
-print("Final marks:", final_marks)</code></pre>
-        <h4>Sample Output</h4><div class="output">Enter marks: 86.5
-Final marks: 89.0</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>marks = float(input("Enter marks: "))</code></td><td>Marks decimal me ho sakte hain, isliye <code>float()</code> use hota hai. Ye decimal input correctly handle karta hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko decimal number me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>2</td><td><code>bonus = 2.5</code></td><td>Bonus decimal value hai, Python isko float treat karega.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>final_marks = marks + bonus</code></td><td>Input marks aur bonus add hote hain. Result <code>final_marks</code> me store hota hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan addition ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>4</td><td><code>print("Final marks:", final_marks)</code></td><td>Final result print hota hai. Learner ko float calculation samajh aati hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="io">
-      <div class="section-title"><h2>9. Input and Output Handling</h2><p>Input user se data lena hai, output result show karna hai.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Programming ka common flow hota hai: input, process, output. Pehle user se data liya jata hai, phir program us data par calculation ya logic apply karta hai, phir result output me show hota hai. Python me input ke liye <code>input()</code> aur output ke liye <code>print()</code> use hota hai.</p>
-        <p>Real applications me ye pattern har jagah milta hai. Shopping app me product aur quantity input hota hai, system bill calculate karta hai, output me total amount show hota hai. Result system me marks input hote hain, percentage calculate hoti hai, output me result show hota hai.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Personalized Greeting</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>name = input("Enter your name: ")
-course = input("Enter your course: ")
-print("Hello", name)
-print("Welcome to", course)</code></pre>
-        <h4>Sample Output</h4><div class="output">Enter your name: Aman
+print(&quot;Total amount:&quot;, total)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Enter quantity: 3
+Total amount: 150</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>quantity = int(input(&quot;Enter quantity: &quot;))</code></td><td>Pehle <code>input()</code> user se value leta hai. Phir <code>int()</code> us value ko integer me convert karta hai. Quantity calculation me use hogi, isliye integer chahiye.</td></tr>
+<tr><td>2</td><td><code>price = 50</code></td><td>Price fixed number hai. Variable me store karne se code readable hota hai aur value update karna easy hota hai.</td></tr>
+<tr><td>3</td><td><code>total = quantity * price</code></td><td><code>*</code> multiplication operator hai. Quantity aur price multiply hote hain. Result total variable me store hota hai.</td></tr>
+<tr><td>4</td><td><code>print(&quot;Total amount:&quot;, total)</code></td><td>Final amount print hota hai. Label output ko meaningful banata hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="io" class="topic">9. Input and Output Handling</h2>
+<p>Input ka matlab user se data lena. Output ka matlab result screen par show karna. Python me <code>input()</code> input ke liye aur <code>print()</code> output ke liye use hota hai.</p>
+<p>Almost har beginner program input-process-output pattern follow karta hai. Pehle user se data aata hai, phir program calculation karta hai, phir result show hota hai.</p>
+<p>Interactive programs user ke entered data ke according output dete hain. Isse program fixed nahi rehta, dynamic ban jata hai.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Registration form, calculator, result system, shopping bill aur fee receipt me input-output handling use hoti hai.</div>
+<h3 class="practical-title">Practical 9.1 - Personalized Greeting</h3>
+<p>User se name aur course input lekar greeting banate hain.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>name = input(&quot;Enter your name: &quot;)
+course = input(&quot;Enter your course: &quot;)
+print(&quot;Hello&quot;, name)
+print(&quot;Welcome to&quot;, course)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Enter your name: Aman
 Enter your course: Python
 Hello Aman
-Welcome to Python</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>name = input("Enter your name: ")</code></td><td>User se name input hota hai. Prompt message user ko guide karta hai. Value <code>name</code> variable me store hoti hai.<br><br><strong>Detailed explanation: Ye line user se keyboard ke through data leti hai. Brackets ke andar jo message hai usko prompt bolte hain, aur ye user ko batata hai ki kya enter karna hai. Jo value user type karta hai, wo variable me store ho jati hai. Is value ko program me aage use kar sakte hain, jaise greeting message, profile, receipt ya report banane me. Beginners ke liye ye point important hai ki input program ko interactive banata hai, warna program fixed values par hi chalega.</strong></td></tr>
-          <tr><td>2</td><td><code>course = input("Enter your course: ")</code></td><td>Course name input hota hai. Course text hai, isliye type casting ki zaroorat nahi.<br><br><strong>Detailed explanation: Ye line user se keyboard ke through data leti hai. Brackets ke andar jo message hai usko prompt bolte hain, aur ye user ko batata hai ki kya enter karna hai. Jo value user type karta hai, wo variable me store ho jati hai. Is value ko program me aage use kar sakte hain, jaise greeting message, profile, receipt ya report banane me. Beginners ke liye ye point important hai ki input program ko interactive banata hai, warna program fixed values par hi chalega.</strong></td></tr>
-          <tr><td>3</td><td><code>print("Hello", name)</code></td><td>Personalized greeting print hoti hai. Comma text aur variable ko saath print karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>4</td><td><code>print("Welcome to", course)</code></td><td>Course ke saath welcome message print hota hai. Ye input-output interaction clear karta hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Next Year Age Calculator</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>name = input("Enter your name: ")
-age = int(input("Enter your age: "))
+Welcome to Python</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>name = input(&quot;Enter your name: &quot;)</code></td><td>User keyboard se name enter karta hai. Prompt message guide karta hai. Entered value name variable me string ke roop me store hoti hai.</td></tr>
+<tr><td>2</td><td><code>course = input(&quot;Enter your course: &quot;)</code></td><td>Course input hota hai. Course text hai, isliye direct string form me store hota hai.</td></tr>
+<tr><td>3</td><td><code>print(&quot;Hello&quot;, name)</code></td><td>Greeting message print hota hai. Comma text aur variable ko combine karta hai.</td></tr>
+<tr><td>4</td><td><code>print(&quot;Welcome to&quot;, course)</code></td><td>Course ke saath welcome message print hota hai. Output user ke input ke according change hota hai.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 9.2 - Next Year Age</h3>
+<p>Input, casting aur calculation ek saath use hote hain.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>name = input(&quot;Enter your name: &quot;)
+age = int(input(&quot;Enter your age: &quot;))
 next_year_age = age + 1
-print(name, "will be", next_year_age, "years old next year.")</code></pre>
-        <h4>Sample Output</h4><div class="output">Enter your name: Riya
+print(name, &quot;will be&quot;, next_year_age, &quot;years old next year.&quot;)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Enter your name: Riya
 Enter your age: 19
-Riya will be 20 years old next year.</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>name = input("Enter your name: ")</code></td><td>Name string form me input hota hai. Is par calculation nahi karni, isliye direct store hota hai.<br><br><strong>Detailed explanation: Ye line user se keyboard ke through data leti hai. Brackets ke andar jo message hai usko prompt bolte hain, aur ye user ko batata hai ki kya enter karna hai. Jo value user type karta hai, wo variable me store ho jati hai. Is value ko program me aage use kar sakte hain, jaise greeting message, profile, receipt ya report banane me. Beginners ke liye ye point important hai ki input program ko interactive banata hai, warna program fixed values par hi chalega.</strong></td></tr>
-          <tr><td>2</td><td><code>age = int(input("Enter your age: "))</code></td><td>Age input string hota hai, calculation ke liye number chahiye. Isliye <code>int()</code> use hota hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko integer me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>3</td><td><code>next_year_age = age + 1</code></td><td>Age me 1 add karke next year age calculate hoti hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan addition ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>4</td><td><code>print(name, "will be", next_year_age, "years old next year.")</code></td><td>Complete readable sentence print hota hai. Multiple values comma se combine hoti hain.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="comments">
-      <div class="section-title"><h2>10. Comments in Python</h2><p>Comments code explain karte hain, Python unhe execute nahi karta.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Comment code ka wo part hota hai jo Python execute nahi karta. Python me single-line comment <code>#</code> se start hota hai. Comment ka use code ka purpose explain karne ke liye hota hai. Beginners ke liye comments helpful hote hain kyunki unhe yaad rehta hai ki particular line kya kar rahi hai.</p>
-        <p>Comments ko meaningful rakhna chahiye. Har obvious line par comment likhna zaroori nahi hota, lekin jab logic explain karna ho tab comment helpful hota hai. Comments future me code read karne wale person ko help karte hain.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Single Line Comment</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code># This program prints a welcome message
-print("Welcome to Python class")</code></pre>
-        <h4>Output</h4><div class="output">Welcome to Python class</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code># This program prints a welcome message</code></td><td>Ye comment hai. Python isko run nahi karta. Ye human reader ko program ka purpose batata hai.<br><br><strong>Detailed explanation: Is line ko learners ko comment ke roop me explain karo. Comment program ka note hota hai, output ka part nahi hota. Python is line ko ignore karta hai, lekin human reader ko code ka purpose samajhne me help milti hai. Real projects me comments confusing logic ko explain karne ke liye use hote hain. Beginners ko samajhna hai ki comment code ko readable banata hai, lekin actual work next executable lines karti hain.</strong></td></tr>
-          <tr><td>2</td><td><code>print("Welcome to Python class")</code></td><td>Ye actual executable line hai. Iska output screen par show hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Comments with Calculation</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code># Calculate total marks
-math_marks = 80
-science_marks = 90
-total = math_marks + science_marks
-print("Total Marks:", total)</code></pre>
-        <h4>Output</h4><div class="output">Total Marks: 170</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code># Calculate total marks</code></td><td>Comment batata hai ki program total marks calculate karega. Python is line ko ignore karta hai.<br><br><strong>Detailed explanation: Is line ko learners ko comment ke roop me explain karo. Comment program ka note hota hai, output ka part nahi hota. Python is line ko ignore karta hai, lekin human reader ko code ka purpose samajhne me help milti hai. Real projects me comments confusing logic ko explain karne ke liye use hote hain. Beginners ko samajhna hai ki comment code ko readable banata hai, lekin actual work next executable lines karti hain.</strong></td></tr>
-          <tr><td>2</td><td><code>math_marks = 80</code></td><td>Math marks integer variable me store ho rahe hain.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>science_marks = 90</code></td><td>Science marks alag variable me store ho rahe hain.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>4</td><td><code>total = math_marks + science_marks</code></td><td>Dono marks add hote hain aur result total me store hota hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan addition ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>5</td><td><code>print("Total Marks:", total)</code></td><td>Final total marks print hote hain.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
-
-    <section id="syntax">
-      <div class="section-title"><h2>11. Basic Python Syntax</h2><p>Syntax Python code likhne ke rules ko bolte hain.</p></div>
-      <article class="card concept">
-        <h3>Detailed Theory</h3>
-        <p>Syntax ka matlab language ke rules. Jaise English me sentence banane ke rules hote hain, waise Python me code likhne ke rules hote hain. Function call ke liye brackets lagte hain, string ke liye quotes lagte hain, variable assignment ke liye <code>=</code> lagta hai.</p>
-        <p>Python me spelling, quotes, brackets, colon, indentation aur case sensitivity ka dhyan rakhna padta hai. Agar syntax galat hua to program run nahi hoga aur error show karega. Error programming ka normal part hai, error ko read karke fix karna hi coding learning ka important part hai.</p>
-      </article>
-      <article class="card practice">
-        <h3>Example 1 - Clean Syntax</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>message = "Python syntax is clean"
+Riya will be 20 years old next year.</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>name = input(&quot;Enter your name: &quot;)</code></td><td>Name input string form me store hota hai. Is par calculation nahi karni, isliye casting needed nahi hai.</td></tr>
+<tr><td>2</td><td><code>age = int(input(&quot;Enter your age: &quot;))</code></td><td>Age input default string hota hai. <code>int()</code> usko number me convert karta hai. Calculation ke liye ye zaroori hai.</td></tr>
+<tr><td>3</td><td><code>next_year_age = age + 1</code></td><td>Age me 1 add hota hai. Result next_year_age variable me store hota hai.</td></tr>
+<tr><td>4</td><td><code>print(name, &quot;will be&quot;, next_year_age, &quot;years old next year.&quot;)</code></td><td>Complete sentence print hota hai. Multiple values comma se combine hoti hain. Output natural sentence jaisa dikhta hai.</td></tr>
+</tbody></table>
+<hr class="sep">
+<h2 id="comments" class="topic">10. Comments and Basic Syntax</h2>
+<p>Comment code ka note hota hai. Python comment ko execute nahi karta. Single-line comment <code>#</code> se start hota hai.</p>
+<p>Syntax ka matlab language ke rules. Python me quotes, brackets, variable names, assignment operator aur indentation ka dhyan rakhna hota hai.</p>
+<p>Error programming ka normal part hai. Syntax error aaye to message read karke check karna hota hai ki quote, bracket, spelling ya indentation me issue hai kya.</p>
+<div class="box info"><strong class="tag">Real World Use Case</strong>Comments documentation me help karte hain. Syntax rules follow karne se code run hota hai aur team members code easily read kar paate hain.</div>
+<h3 class="practical-title">Practical 10.1 - Comment Example</h3>
+<p>Comment code ka purpose explain karta hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code># This program prints a welcome message
+print(&quot;Welcome to Python class&quot;)</code></pre>
+<div class="run-loc">Output</div>
+<pre><code>Welcome to Python class</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code># This program prints a welcome message</code></td><td>Ye comment hai. Python is line ko execute nahi karta. Ye human reader ko batata hai ki program ka purpose kya hai.</td></tr>
+<tr><td>2</td><td><code>print(&quot;Welcome to Python class&quot;)</code></td><td>Ye actual executable line hai. <code>print()</code> welcome message screen par show karta hai.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Practical 10.2 - Clean Syntax</h3>
+<p>Correct syntax se program without error run hota hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>message = &quot;Python syntax is clean&quot;
 print(message)</code></pre>
-        <h4>Output</h4><div class="output">Python syntax is clean</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>message = "Python syntax is clean"</code></td><td>Variable name valid hai, assignment operator correct hai, string quotes me hai. Isliye syntax correct hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>print(message)</code></td><td>Function name correct hai, brackets complete hain, aur variable spelling same hai. Output properly print hota hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Example 2 - Multiple Statements</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>course = "Python"
-duration = "5 hours"
-print("Course:", course)
-print("Duration:", duration)</code></pre>
-        <h4>Output</h4><div class="output">Course: Python
-Duration: 5 hours</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>course = "Python"</code></td><td>Course variable string value store karta hai. Quotes complete hain, syntax correct hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>2</td><td><code>duration = "5 hours"</code></td><td>Duration string me hai kyunki number ke saath text bhi hai.<br><br><strong>Detailed explanation: Ye assignment line hai. Assignment ka matlab hota hai right side wali value ko left side wale variable me store karna. Programming me important point ye hai ki `=` mathematics wala equal nahi, balki storage instruction hota hai. Variable ek named box ki tarah hai jisme value rakhi jaati hai. Baad me same variable ko print, calculate ya update kar sakte hain. Meaningful variable names code ko easy aur professional banate hain.</strong></td></tr>
-          <tr><td>3</td><td><code>print("Course:", course)</code></td><td>Label aur variable output me saath print hote hain.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-          <tr><td>4</td><td><code>print("Duration:", duration)</code></td><td>Duration readable format me print hoti hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-    </section>
+<div class="run-loc">Output</div>
+<pre><code>Python syntax is clean</code></pre>
+<h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>message = &quot;Python syntax is clean&quot;</code></td><td>Variable name valid hai. String quotes me hai. Assignment operator correct hai. Isliye syntax valid hai.</td></tr>
+<tr><td>2</td><td><code>print(message)</code></td><td>Function name correct hai, brackets complete hain, aur variable spelling same hai. Output properly print hota hai.</td></tr>
+</tbody></table>
+<hr class="sep">
 
-    <section id="practice">
-      <div class="section-title"><h2>12. Basic Programming Practice</h2><p>Ab concepts ko combine karke real beginner programs banate hain.</p></div>
-      <article class="card practice">
-        <h3>Project Practice 1 - Student Result Calculator</h3>
-        <p>Is practical me variables, input, type casting, arithmetic calculation and output formatting ek saath use honge.</p>
-        <span class="code-title">Python Code</span>
-        <pre><code>student_name = input("Enter student name: ")
-python_marks = float(input("Enter Python marks: "))
-math_marks = float(input("Enter Math marks: "))
-english_marks = float(input("Enter English marks: "))
+<h2 id="projects" class="topic">11. Complete Practical Projects</h2>
+<div class="box info"><strong class="tag">Purpose</strong>Ab tak ke concepts ko combine karke real beginner-level programs banaye ja rahe hain. In projects me variables, input, type casting, calculation aur output saath use honge.</div>
+<h3 class="practical-title">Project 1 - Student Result Calculator</h3>
+<p>Ye project result system ka beginner version hai. Student marks input honge, total calculate hoga, percentage calculate hogi, aur final result print hoga.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>student_name = input(&quot;Enter student name: &quot;)
+python_marks = float(input(&quot;Enter Python marks: &quot;))
+math_marks = float(input(&quot;Enter Math marks: &quot;))
+english_marks = float(input(&quot;Enter English marks: &quot;))
 total_marks = python_marks + math_marks + english_marks
 percentage = total_marks / 3
-print("----- Student Result -----")
-print("Name:", student_name)
-print("Total Marks:", total_marks)
-print("Percentage:", percentage)</code></pre>
-        <h4>Sample Output</h4><div class="output">Enter student name: Aman
+print(&quot;----- Student Result -----&quot;)
+print(&quot;Name:&quot;, student_name)
+print(&quot;Total Marks:&quot;, total_marks)
+print(&quot;Percentage:&quot;, percentage)</code></pre><div class="run-loc">Output</div>
+<pre><code>Enter student name: Aman
 Enter Python marks: 90
 Enter Math marks: 85
 Enter English marks: 80
 ----- Student Result -----
 Name: Aman
 Total Marks: 255.0
-Percentage: 85.0</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>student_name = input("Enter student name: ")</code></td><td>Student ka naam input hota hai. Name text hai, isliye direct string ke roop me store hota hai.<br><br><strong>Detailed explanation: Ye line user se keyboard ke through data leti hai. Brackets ke andar jo message hai usko prompt bolte hain, aur ye user ko batata hai ki kya enter karna hai. Jo value user type karta hai, wo variable me store ho jati hai. Is value ko program me aage use kar sakte hain, jaise greeting message, profile, receipt ya report banane me. Beginners ke liye ye point important hai ki input program ko interactive banata hai, warna program fixed values par hi chalega.</strong></td></tr>
-          <tr><td>2</td><td><code>python_marks = float(input("Enter Python marks: "))</code></td><td>Python marks input hote hain. <code>float()</code> decimal marks handle karne ke liye use hota hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko decimal number me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>3</td><td><code>math_marks = float(input("Enter Math marks: "))</code></td><td>Math marks input hote hain. Variable name clear hai, isliye code readable hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko decimal number me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>4</td><td><code>english_marks = float(input("Enter English marks: "))</code></td><td>English marks input hote hain. Teeno marks numeric form me convert ho chuke hain.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko decimal number me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>5</td><td><code>total_marks = python_marks + math_marks + english_marks</code></td><td>Teeno subjects ke marks add hote hain. Ye processing step hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan addition ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>6</td><td><code>percentage = total_marks / 3</code></td><td>Total ko 3 se divide karke average percentage calculate hoti hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan division ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>7-10</td><td><code>print(...)</code></td><td>Output section result ko readable format me show karta hai. Labels user ko clearly batate hain ki kaunsi value kya hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Project Practice 2 - Shopping Bill Calculator</h3>
-        <p>Is practical me item name, price and quantity input lekar total bill calculate karenge.</p>
-        <span class="code-title">Python Code</span>
-        <pre><code>item_name = input("Enter item name: ")
-item_price = float(input("Enter item price: "))
-quantity = int(input("Enter quantity: "))
+Percentage: 85.0</code></pre><h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>student_name = input(&quot;Enter student name: &quot;)</code></td><td>Student ka name user se input hota hai. Name text hai, isliye direct string form me store hota hai. Is value ko result output me use kiya jayega.</td></tr>
+<tr><td>2-4</td><td><code>float(input(...))</code></td><td>Har subject ke marks user se liye ja rahe hain. <code>input()</code> string deta hai aur <code>float()</code> marks ko decimal number me convert karta hai. Decimal marks allow karne ke liye float best hai.</td></tr>
+<tr><td>5</td><td><code>total_marks = python_marks + math_marks + english_marks</code></td><td>Teeno subjects ke marks add ho rahe hain. Ye processing step hai. Result total_marks me store hota hai.</td></tr>
+<tr><td>6</td><td><code>percentage = total_marks / 3</code></td><td>Total marks ko 3 subjects se divide kiya gaya hai. Division ke baad average percentage milti hai.</td></tr>
+<tr><td>7-10</td><td><code>print(...)</code></td><td>Final result readable format me print hota hai. Heading, name, total marks aur percentage clear labels ke saath show hote hain.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Project 2 - Shopping Bill Calculator</h3>
+<p>Ye project billing software ka basic logic dikhata hai. Item price aur quantity input hote hain, phir total bill calculate hota hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>item_name = input(&quot;Enter item name: &quot;)
+item_price = float(input(&quot;Enter item price: &quot;))
+quantity = int(input(&quot;Enter quantity: &quot;))
 total_bill = item_price * quantity
-print("----- Bill Details -----")
-print("Item:", item_name)
-print("Price:", item_price)
-print("Quantity:", quantity)
-print("Total Bill:", total_bill)</code></pre>
-        <h4>Sample Output</h4><div class="output">Enter item name: Notebook
+print(&quot;----- Bill Details -----&quot;)
+print(&quot;Item:&quot;, item_name)
+print(&quot;Price:&quot;, item_price)
+print(&quot;Quantity:&quot;, quantity)
+print(&quot;Total Bill:&quot;, total_bill)</code></pre><div class="run-loc">Output</div>
+<pre><code>Enter item name: Notebook
 Enter item price: 45.5
 Enter quantity: 4
 ----- Bill Details -----
 Item: Notebook
 Price: 45.5
 Quantity: 4
-Total Bill: 182.0</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>item_name = input("Enter item name: ")</code></td><td>Item ka naam input hota hai. Ye text value hai, isliye string ke form me store hota hai.<br><br><strong>Detailed explanation: Ye line user se keyboard ke through data leti hai. Brackets ke andar jo message hai usko prompt bolte hain, aur ye user ko batata hai ki kya enter karna hai. Jo value user type karta hai, wo variable me store ho jati hai. Is value ko program me aage use kar sakte hain, jaise greeting message, profile, receipt ya report banane me. Beginners ke liye ye point important hai ki input program ko interactive banata hai, warna program fixed values par hi chalega.</strong></td></tr>
-          <tr><td>2</td><td><code>item_price = float(input("Enter item price: "))</code></td><td>Price decimal ho sakta hai, isliye <code>float()</code> use hota hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko decimal number me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>3</td><td><code>quantity = int(input("Enter quantity: "))</code></td><td>Quantity whole number hoti hai, isliye <code>int()</code> use kiya gaya hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko integer me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>4</td><td><code>total_bill = item_price * quantity</code></td><td>Price aur quantity multiply hote hain. <code>*</code> multiplication operator hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan multiplication ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>5-9</td><td><code>print(...)</code></td><td>Bill details readable format me print hoti hain. Real billing systems bhi isi basic logic se start hote hain.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card practice">
-        <h3>Project Practice 3 - Fee Receipt Calculator</h3>
-        <span class="code-title">Python Code</span>
-        <pre><code>student_name = input("Enter student name: ")
-course_fee = float(input("Enter course fee: "))
-paid_amount = float(input("Enter paid amount: "))
+Total Bill: 182.0</code></pre><h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>item_name = input(&quot;Enter item name: &quot;)</code></td><td>Item name user se input hota hai. Ye text value hai, isliye string form me store hota hai.</td></tr>
+<tr><td>2</td><td><code>item_price = float(input(&quot;Enter item price: &quot;))</code></td><td>Item price decimal ho sakta hai, isliye float casting use hoti hai. Billing me decimal prices common hote hain.</td></tr>
+<tr><td>3</td><td><code>quantity = int(input(&quot;Enter quantity: &quot;))</code></td><td>Quantity normally whole number hoti hai. <code>int()</code> input ko integer me convert karta hai.</td></tr>
+<tr><td>4</td><td><code>total_bill = item_price * quantity</code></td><td>Price aur quantity multiply hote hain. Ye bill calculation ka main processing step hai.</td></tr>
+<tr><td>5-9</td><td><code>print(...)</code></td><td>Bill details readable format me print hoti hain. User ko item, price, quantity aur total bill clear dikhte hain.</td></tr>
+</tbody></table>
+<h3 class="practical-title">Project 3 - Fee Receipt Calculator</h3>
+<p>Ye project institute fee receipt ka beginner version hai. Total fee, paid amount aur remaining amount calculate hota hai.</p>
+<div class="run-loc">Python Code</div>
+<pre><code>student_name = input(&quot;Enter student name: &quot;)
+course_fee = float(input(&quot;Enter course fee: &quot;))
+paid_amount = float(input(&quot;Enter paid amount: &quot;))
 remaining_amount = course_fee - paid_amount
-print("----- Fee Receipt -----")
-print("Student:", student_name)
-print("Course Fee:", course_fee)
-print("Paid Amount:", paid_amount)
-print("Remaining Amount:", remaining_amount)</code></pre>
-        <h4>Sample Output</h4><div class="output">Enter student name: Neha
+print(&quot;----- Fee Receipt -----&quot;)
+print(&quot;Student:&quot;, student_name)
+print(&quot;Course Fee:&quot;, course_fee)
+print(&quot;Paid Amount:&quot;, paid_amount)
+print(&quot;Remaining Amount:&quot;, remaining_amount)</code></pre><div class="run-loc">Output</div>
+<pre><code>Enter student name: Neha
 Enter course fee: 15000
 Enter paid amount: 5000
 ----- Fee Receipt -----
 Student: Neha
 Course Fee: 15000.0
 Paid Amount: 5000.0
-Remaining Amount: 10000.0</div>
-        <h4>Detailed Code Explanation</h4>
-        <table><thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead><tbody>
-          <tr><td>1</td><td><code>student_name = input("Enter student name: ")</code></td><td>Student name input hota hai aur string form me store hota hai.<br><br><strong>Detailed explanation: Ye line user se keyboard ke through data leti hai. Brackets ke andar jo message hai usko prompt bolte hain, aur ye user ko batata hai ki kya enter karna hai. Jo value user type karta hai, wo variable me store ho jati hai. Is value ko program me aage use kar sakte hain, jaise greeting message, profile, receipt ya report banane me. Beginners ke liye ye point important hai ki input program ko interactive banata hai, warna program fixed values par hi chalega.</strong></td></tr>
-          <tr><td>2</td><td><code>course_fee = float(input("Enter course fee: "))</code></td><td>Course fee decimal ho sakti hai, isliye float conversion use hota hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko decimal number me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>3</td><td><code>paid_amount = float(input("Enter paid amount: "))</code></td><td>Paid amount bhi numeric value hai. Calculation ke liye float me convert hota hai.<br><br><strong>Detailed explanation: Is line me do kaam ek saath ho rahe hain: pehle user se value li ja rahi hai, phir us value ko decimal number me convert kiya ja raha hai. Important point ye hai ki input by default string hota hai, isliye calculation ke liye type casting zaroori hoti hai. Agar casting nahi karenge to plus, minus, multiply jaise operations galat result ya error de sakte hain. Real life me marks, age, price, quantity aur fee jaise values par calculation hoti hai, isliye unhe number type me lana important hai. Is line ko slowly read karke samajhna hai: andar input chalta hai, bahar casting function us input ko correct type me convert karta hai.</strong></td></tr>
-          <tr><td>4</td><td><code>remaining_amount = course_fee - paid_amount</code></td><td>Course fee se paid amount subtract hota hai. Result remaining amount me store hota hai.<br><br><strong>Detailed explanation: Is line me actual processing ho rahi hai, yani program input values ka use karke new result bana raha hai. Yahan subtraction ka concept use ho raha hai. Left side variable result store karta hai, aur right side expression calculate hota hai. Is line ko input-process-output model se connect karke samajhna easy hota hai: pehle data liya, ab calculation hui, baad me result print hoga. Real world me bill, marks, percentage, balance, discount aur reports isi tarah calculate hote hain.</strong></td></tr>
-          <tr><td>5-9</td><td><code>print(...)</code></td><td>Receipt details output me clear format me show hoti hain. Ye real admission/fee system ka basic version hai.<br><br><strong>Detailed explanation: Ye line output screen par result dikhati hai. `print()` Python ka built-in function hai, matlab ye pehle se Python me available hota hai. Brackets ke andar text, number, variable ya expression diya ja sakta hai. Agar comma use hota hai to Python values ke beech space add karke output ko readable banata hai. Real applications me print ka use testing, result display, receipt, report aur debugging ke liye hota hai.</strong></td></tr>
-        </tbody></table>
-      </article>
-      <article class="card note">
-        <h3>Student Homework Tasks</h3>
-        <ol>
-          <li>Personal introduction program banao: name, age, city, course input lo aur complete introduction print karo.</li>
-          <li>Rectangle area calculator banao: length and width input lo, area calculate karo, output print karo.</li>
-          <li>Temperature converter banao: Celsius input lo, Fahrenheit calculate karo, output print karo.</li>
-          <li>Simple fee receipt program ko modify karke discount add karo.</li>
-          <li>Har homework program me comments add karo aur variable names meaningful rakho.</li>
-        </ol>
-      </article>
-      <article class="card highlight">
-        <h3>Final Recap</h3>
-        <p>Aaj humne programming ka foundation samjha, Python ka role samjha, interpreter ka working samjha, first program likha, variables banaye, naming rules follow kiye, data types identify kiye, type casting use ki, input-output handle kiya, comments aur syntax samjhe, aur practical mini programs banaye. Ye sab topics future ke har Python topic me use honge. Agar aaj ka foundation clear hai, to aage condition, loops, functions, data structures, data science aur machine learning samajhna easy ho jayega.</p>
-      </article>
-    </section>
+Remaining Amount: 10000.0</code></pre><h3 class="subtopic">Detailed Code Explanation</h3><table><thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead><tbody>
+<tr><td>1</td><td><code>student_name = input(&quot;Enter student name: &quot;)</code></td><td>Student name input hota hai aur string form me store hota hai. Receipt me name show karne ke liye ye value use hogi.</td></tr>
+<tr><td>2</td><td><code>course_fee = float(input(&quot;Enter course fee: &quot;))</code></td><td>Course fee numeric value hai. Decimal value possible hai, isliye float use hota hai.</td></tr>
+<tr><td>3</td><td><code>paid_amount = float(input(&quot;Enter paid amount: &quot;))</code></td><td>Paid amount bhi numeric value hai. Calculation ke liye float conversion zaroori hai.</td></tr>
+<tr><td>4</td><td><code>remaining_amount = course_fee - paid_amount</code></td><td>Course fee me se paid amount subtract hota hai. Result remaining amount hota hai.</td></tr>
+<tr><td>5-9</td><td><code>print(...)</code></td><td>Receipt ka final output print hota hai. Labels receipt ko clear aur professional banate hain.</td></tr>
+</tbody></table>
+<hr class="sep">
 
-    <section id="student-notes">
-      <div class="section-title"><h2>Student Notes - Day 1 Summary</h2><p>Ye section learners ke saath share karne ke liye hai. Isme class ka simple recap, important points, practice code, aur homework diya gaya hai.</p></div>
-      <article class="card story">
-        <h3>What We Learned Today</h3>
-        <p>Aaj humne Python programming ka foundation padha. Programming ka matlab computer ko step-by-step instructions dena hota hai. Computer apne kuch decide nahi karta; computer wahi karta hai jo hum code me clearly likhte hain. Isliye coding me clear thinking aur correct sequence bahut important hota hai.</p>
-        <p>Humne Python ke baare me padha ki Python ek beginner-friendly programming language hai. Python ka syntax simple hota hai, isliye first-time learners ke liye Python start karna easy hota hai. Python ka use web development, automation, data science, machine learning, AI, reports, billing systems aur real-world applications me hota hai.</p>
-        <p>Humne interpreter ka role bhi samjha. Python interpreter code ko line by line execute karta hai. Agar code correct hota hai to output milta hai, aur agar code me mistake hoti hai to error show hota hai. Error coding ka normal part hai, isliye error se darna nahi hai; error ko read karke fix karna learning ka part hai.</p>
-      </article>
+<h2 id="student-notes" class="topic">12. Student Share Notes and Homework</h2>
+<div class="summary-box"><strong class="tag">Day 1 Summary</strong>Programming ka matlab computer ko clear instructions dena hai. Python ek beginner-friendly language hai. Interpreter code ko line by line run karta hai. Variables data store karte hain. Data types value ka nature batate hain. Input user se data leta hai. Output result show karta hai. Type casting calculation ke liye input ko correct type me convert karti hai.</div>
+<h3 class="subtopic">Homework Tasks</h3>
+<ol class="steps">
+<li>Personal introduction program banao: name, age, city aur course input lo.</li>
+<li>Marks calculator me 5 subjects add karo aur percentage calculate karo.</li>
+<li>Shopping bill calculator banao jisme price, quantity aur total bill ho.</li>
+<li>Fee receipt calculator me discount add karo.</li>
+<li>Har program me comments add karo aur variable names meaningful rakho.</li>
+</ol>
+<div class="box warn"><strong class="tag">Practice Rule</strong>Code copy-paste nahi karna hai. Har program khud type karna hai, run karna hai, output observe karna hai, aur error aaye to line by line check karna hai.</div>
 
-      <article class="card concept">
-        <h3>Important Concepts in Simple Words</h3>
-        <p><strong>Variable:</strong> Variable ek named box ki tarah hota hai jisme hum value store karte hain. Example: <code>student_name = "Aman"</code>. Yahan <code>student_name</code> box ka naam hai aur <code>Aman</code> uske andar stored value hai.</p>
-        <p><strong>Data Type:</strong> Data type batata hai ki value kis type ki hai. <code>int</code> whole number ke liye, <code>float</code> decimal number ke liye, <code>str</code> text ke liye, aur <code>bool</code> true/false ke liye use hota hai.</p>
-        <p><strong>Input:</strong> User se value lene ke liye <code>input()</code> use hota hai. Input se program interactive ban jata hai, kyunki program user ki entered value ke according output de sakta hai.</p>
-        <p><strong>Output:</strong> Screen par result show karne ke liye <code>print()</code> use hota hai. Print ka use result, message, receipt, report aur debugging me hota hai.</p>
-        <p><strong>Type Casting:</strong> Ek data type ko dusre data type me convert karna type casting hota hai. Example: <code>int(input("Enter age: "))</code>. Input by default string hota hai, isliye calculation ke liye usko number me convert karna padta hai.</p>
-        <p><strong>Comment:</strong> Comment code ka note hota hai. Python comment ko execute nahi karta. Comment <code>#</code> se start hota hai aur code ka purpose explain karne me help karta hai.</p>
-      </article>
-
-      <article class="card practice">
-        <h3>Practice Code 1 - Student Introduction</h3>
-        <p>Is program ko run karke student apna introduction generate kar sakta hai. Isme input, variable, and print teeno concepts use ho rahe hain.</p>
-        <span class="code-title">Python Code</span>
-        <pre><code>name = input("Enter your name: ")
-age = int(input("Enter your age: "))
-city = input("Enter your city: ")
-course = input("Enter your course: ")
-
-print("My name is", name)
-print("I am", age, "years old")
-print("I live in", city)
-print("I am learning", course)</code></pre>
-        <h4>How This Code Works</h4>
-        <p>First line user ka name leti hai aur <code>name</code> variable me store karti hai. Second line age leti hai aur <code>int()</code> se number me convert karti hai, kyunki age number hoti hai. Third and fourth lines city aur course input leti hain. Last four print lines stored values ko readable sentences me output karti hain.</p>
-      </article>
-
-      <article class="card practice">
-        <h3>Practice Code 2 - Marks Calculator</h3>
-        <p>Is program me student marks input karega, program total marks aur percentage calculate karega. Ye result system ka basic version hai.</p>
-        <span class="code-title">Python Code</span>
-        <pre><code>python_marks = float(input("Enter Python marks: "))
-math_marks = float(input("Enter Math marks: "))
-english_marks = float(input("Enter English marks: "))
-
-total_marks = python_marks + math_marks + english_marks
-percentage = total_marks / 3
-
-print("Total Marks:", total_marks)
-print("Percentage:", percentage)</code></pre>
-        <h4>How This Code Works</h4>
-        <p>First three lines subjects ke marks input leti hain. <code>float()</code> use hua hai kyunki marks decimal me bhi ho sakte hain. <code>total_marks</code> line teeno marks ko add karti hai. <code>percentage</code> line total ko 3 se divide karti hai. Last two lines final result show karti hain.</p>
-      </article>
-
-      <article class="card note">
-        <h3>Homework for Students</h3>
-        <ol>
-          <li>Personal introduction program khud type karke run karo.</li>
-          <li>Marks calculator me 5 subjects add karo aur percentage calculate karo.</li>
-          <li>Shopping bill calculator banao jisme item price aur quantity input ho.</li>
-          <li>Fee receipt calculator banao jisme total fee, paid fee, aur remaining fee calculate ho.</li>
-          <li>Har program me at least 2 comments likho aur variable names meaningful rakho.</li>
-        </ol>
-      </article>
-
-      <article class="card highlight">
-        <h3>Final Learning Message</h3>
-        <p>Python seekhne ka best way hai daily practice. Aaj ke concepts small lag sakte hain, lekin yehi future ke loops, functions, data structures, data science aur machine learning ka base hain. Agar variables, data types, input, output aur type casting clear ho gaye, to Python ke next topics confidently samajh paoge.</p>
-      </article>
-    </section>
-  </main>
+</div>
 </body>
 </html>
