@@ -49,7 +49,7 @@
   <main>
     <nav>
       <div class="nav-wrap">
-        <a href="#plan">Session Plan</a><a href="#programming">Programming</a><a href="#python">Python</a><a href="#interpreter">Interpreter</a><a href="#first-program">First Program</a><a href="#variables">Variables</a><a href="#naming">Naming</a><a href="#datatypes">Data Types</a><a href="#casting">Type Casting</a><a href="#io">Input Output</a><a href="#comments">Comments</a><a href="#syntax">Syntax</a><a href="#practice">Practice</a>
+        <a href="#plan">Session Plan</a><a href="#programming">Programming</a><a href="#python">Python</a><a href="#interpreter">Interpreter</a><a href="#first-program">First Program</a><a href="#variables">Variables</a><a href="#naming">Naming</a><a href="#datatypes">Data Types</a><a href="#casting">Type Casting</a><a href="#io">Input Output</a><a href="#comments">Comments</a><a href="#syntax">Syntax</a><a href="#practice">Practice</a><a href="#student-notes">Student Notes</a>
       </div>
     </nav>
 
@@ -682,6 +682,76 @@ Remaining Amount: 10000.0</div>
       <article class="card teacher">
         <h3>Final Closing Script</h3>
         <p>Aaj humne programming ka foundation samjha, Python ka role samjha, interpreter ka working samjha, first program likha, variables banaye, naming rules follow kiye, data types identify kiye, type casting use ki, input-output handle kiya, comments aur syntax samjhe, aur practical mini programs banaye. Ye sab topics future ke har Python topic me use honge. Agar aaj ka foundation clear hai, to aage condition, loops, functions, data structures, data science aur machine learning samajhna easy ho jayega.</p>
+      </article>
+    </section>
+
+    <section id="student-notes">
+      <div class="section-title"><h2>Student Share Notes - Day 1 Summary</h2><p>Ye section students ke saath directly share karne ke liye hai. Isme class ka simple recap, important points, practice code, aur homework diya gaya hai.</p></div>
+      <article class="card story">
+        <h3>What We Learned Today</h3>
+        <p>Aaj humne Python programming ka foundation padha. Programming ka matlab computer ko step-by-step instructions dena hota hai. Computer apne aap kuch decide nahi karta; computer wahi karta hai jo hum code me clearly likhte hain. Isliye coding me clear thinking aur correct sequence bahut important hota hai.</p>
+        <p>Humne Python ke baare me padha ki Python ek beginner-friendly programming language hai. Python ka syntax simple hota hai, isliye first-time learners ke liye Python start karna easy hota hai. Python ka use web development, automation, data science, machine learning, AI, reports, billing systems aur real-world applications me hota hai.</p>
+        <p>Humne interpreter ka role bhi samjha. Python interpreter code ko line by line execute karta hai. Agar code correct hota hai to output milta hai, aur agar code me mistake hoti hai to error show hota hai. Error coding ka normal part hai, isliye error se darna nahi hai; error ko read karke fix karna learning ka part hai.</p>
+      </article>
+
+      <article class="card concept">
+        <h3>Important Concepts in Simple Words</h3>
+        <p><strong>Variable:</strong> Variable ek named box ki tarah hota hai jisme hum value store karte hain. Example: <code>student_name = "Aman"</code>. Yahan <code>student_name</code> box ka naam hai aur <code>Aman</code> uske andar stored value hai.</p>
+        <p><strong>Data Type:</strong> Data type batata hai ki value kis type ki hai. <code>int</code> whole number ke liye, <code>float</code> decimal number ke liye, <code>str</code> text ke liye, aur <code>bool</code> true/false ke liye use hota hai.</p>
+        <p><strong>Input:</strong> User se value lene ke liye <code>input()</code> use hota hai. Input se program interactive ban jata hai, kyunki program user ki entered value ke according output de sakta hai.</p>
+        <p><strong>Output:</strong> Screen par result show karne ke liye <code>print()</code> use hota hai. Print ka use result, message, receipt, report aur debugging me hota hai.</p>
+        <p><strong>Type Casting:</strong> Ek data type ko dusre data type me convert karna type casting hota hai. Example: <code>int(input("Enter age: "))</code>. Input by default string hota hai, isliye calculation ke liye usko number me convert karna padta hai.</p>
+        <p><strong>Comment:</strong> Comment code ka note hota hai. Python comment ko execute nahi karta. Comment <code>#</code> se start hota hai aur code ka purpose explain karne me help karta hai.</p>
+      </article>
+
+      <article class="card practice">
+        <h3>Practice Code 1 - Student Introduction</h3>
+        <p>Is program ko run karke student apna introduction generate kar sakta hai. Isme input, variable, and print teeno concepts use ho rahe hain.</p>
+        <span class="code-title">Python Code</span>
+        <pre><code>name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+city = input("Enter your city: ")
+course = input("Enter your course: ")
+
+print("My name is", name)
+print("I am", age, "years old")
+print("I live in", city)
+print("I am learning", course)</code></pre>
+        <h4>How This Code Works</h4>
+        <p>First line user ka name leti hai aur <code>name</code> variable me store karti hai. Second line age leti hai aur <code>int()</code> se number me convert karti hai, kyunki age number hoti hai. Third and fourth lines city aur course input leti hain. Last four print lines stored values ko readable sentences me output karti hain.</p>
+      </article>
+
+      <article class="card practice">
+        <h3>Practice Code 2 - Marks Calculator</h3>
+        <p>Is program me student marks input karega, program total marks aur percentage calculate karega. Ye result system ka basic version hai.</p>
+        <span class="code-title">Python Code</span>
+        <pre><code>python_marks = float(input("Enter Python marks: "))
+math_marks = float(input("Enter Math marks: "))
+english_marks = float(input("Enter English marks: "))
+
+total_marks = python_marks + math_marks + english_marks
+percentage = total_marks / 3
+
+print("Total Marks:", total_marks)
+print("Percentage:", percentage)</code></pre>
+        <h4>How This Code Works</h4>
+        <p>First three lines subjects ke marks input leti hain. <code>float()</code> use hua hai kyunki marks decimal me bhi ho sakte hain. <code>total_marks</code> line teeno marks ko add karti hai. <code>percentage</code> line total ko 3 se divide karti hai. Last two lines final result show karti hain.</p>
+      </article>
+
+      <article class="card note">
+        <h3>Homework for Students</h3>
+        <ol>
+          <li>Personal introduction program khud type karke run karo.</li>
+          <li>Marks calculator me 5 subjects add karo aur percentage calculate karo.</li>
+          <li>Shopping bill calculator banao jisme item price aur quantity input ho.</li>
+          <li>Fee receipt calculator banao jisme total fee, paid fee, aur remaining fee calculate ho.</li>
+          <li>Har program me at least 2 comments likho aur variable names meaningful rakho.</li>
+        </ol>
+      </article>
+
+      <article class="card teacher">
+        <h3>Final Student Message</h3>
+        <p>Python seekhne ka best way hai daily practice. Aaj ke concepts small lag sakte hain, lekin yehi future ke loops, functions, data structures, data science aur machine learning ka base hain. Agar variables, data types, input, output aur type casting clear ho gaye, to aap Python ke next topics confidently samajh paoge.</p>
       </article>
     </section>
   </main>
