@@ -1,10 +1,10 @@
-# Day 1 - Introduction to Programming & Python
+# Python Day 1 & 2 - Programming Basics and Python Fundamentals
 
-Classroom-ready Hinglish notes for Day 1 of a 15-day Python for Data Science and Machine Learning journey. The Day 1 page is expanded for a 4-5 hour session with paragraph-style teacher scripts, detailed topic explanations, practicals, line-by-line code explanation, recap, and homework.
+Classroom-ready simple Hinglish GitHub Pages notes for Python beginners. The main page is written in paragraph format so a trainer can directly read and explain it in class. It covers programming basics, Python introduction, interpreter basics, first Python program, variables, naming rules, data types, type casting, input/output, comments, syntax, and practical coding examples with detailed line-by-line explanation.
 
 ## Files
 
-- `index.html` - Complete Day 1 teaching document with concepts, practicals, line-by-line code explanation, recap, and homework.
+- `index.html` - Complete GitHub Pages teaching document with theory, practical code, sample output, detailed code explanation, recap, and student tasks.
 - `direct-reading-notes.html` - Direct paragraph-by-paragraph class reading notes in natural Hinglish.
 - `teacher-delivery-notes.html` - Polished 5-hour teacher delivery notes written in natural Hinglish speaking style.
 - `learners-notes.html` - Simple English learner notes in paragraph format with code examples and practice tasks.
@@ -13,7 +13,7 @@ Classroom-ready Hinglish notes for Day 1 of a 15-day Python for Data Science and
 
 ## How to Use
 
-Open `direct-reading-notes.html` when you want to read directly in class paragraph by paragraph. Open `teacher-delivery-notes.html` when you want a broader 5-hour teaching flow. Open `index.html` when you want the full structured teaching document. Ask students to type the code from `examples/day1_practice.py` and `examples/day1_student_profile.py` themselves and run it.
+Open `index.html` when you want the full structured GitHub Pages document. It is designed for direct classroom teaching. Ask students to type the code examples themselves and run them in Python, VS Code, or Jupyter Notebook.
 
 ```bash
 python examples/day1_practice.py

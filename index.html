@@ -1,867 +1,753 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 1 - Introduction to Programming & Python</title>
-<style>
-  :root {
-    --ink: #172033;
-    --muted: #526173;
-    --brand: #2457a6;
-    --teal: #0f766e;
-    --amber: #b45309;
-    --rose: #be123c;
-    --green: #15803d;
-    --sky-soft: #eff6ff;
-    --teal-soft: #ecfdf5;
-    --amber-soft: #fffbeb;
-    --rose-soft: #fff1f2;
-    --line: #dbe4ef;
-    --code: #0f172a;
-    --paper: #ffffff;
-    --wash: #f7f8fa;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--ink);
-    background: var(--wash);
-    line-height: 1.75;
-  }
-
-  header {
-    background: #172033;
-    color: white;
-    padding: 38px 22px 34px;
-  }
-
-  .hero-inner,
-  main {
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 11px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.38);
-    background: rgba(255, 255, 255, 0.14);
-    font-weight: 800;
-    font-size: 14px;
-  }
-
-  h1 {
-    max-width: 900px;
-    margin: 18px 0 12px;
-    font-size: clamp(30px, 4vw, 48px);
-    line-height: 1.15;
-    letter-spacing: 0;
-  }
-
-  .hero-copy {
-    max-width: 880px;
-    color: #edf4ff;
-    font-size: 17px;
-  }
-
-  main {
-    background: var(--paper);
-    padding: 28px 22px 80px;
-  }
-
-  nav {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 18px;
-    margin: 0 0 30px;
-    background: #fbfdff;
-  }
-
-  nav h2 {
-    margin-top: 0;
-  }
-
-  nav a {
-    color: var(--brand);
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .three {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .box {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 18px;
-    margin: 20px 0;
-    background: white;
-  }
-
-  .info {
-    background: var(--sky-soft);
-    border-left: 5px solid var(--brand);
-  }
-
-  .teacher {
-    background: var(--amber-soft);
-    border-left: 5px solid var(--amber);
-  }
-
-  .practice {
-    background: var(--teal-soft);
-    border-left: 5px solid var(--teal);
-  }
-
-  .motivation {
-    background: var(--rose-soft);
-    border-left: 5px solid var(--rose);
-  }
-
-  .section-title {
-    margin: 36px 0 14px;
-    padding: 14px 16px;
-    border-radius: 8px;
-    background: #eef4ff;
-    border-left: 5px solid var(--brand);
-    color: white;
-  }
-
-  .section-title h2 {
-    margin: 0;
-    font-size: 25px;
-    color: var(--ink);
-  }
-
-  .section-title p {
-    margin: 8px 0 0;
-    color: var(--muted);
-  }
-
-  h2,
-  h3,
-  h4 {
-    line-height: 1.3;
-    letter-spacing: 0;
-  }
-
-  h3 {
-    color: var(--brand);
-    margin-top: 24px;
-  }
-
-  h4 {
-    margin-bottom: 8px;
-    color: var(--teal);
-  }
-
-  ul,
-  ol {
-    padding-left: 24px;
-  }
-
-  li {
-    margin: 8px 0;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0;
-    font-size: 15px;
-  }
-
-  th,
-  td {
-    border: 1px solid var(--line);
-    padding: 12px;
-    text-align: left;
-    vertical-align: top;
-  }
-
-  th {
-    background: #152238;
-    color: white;
-  }
-
-  tr:nth-child(even) {
-    background: #f8fbff;
-  }
-
-  .code-label {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 6px 12px;
-    border-radius: 8px 8px 0 0;
-    background: #152238;
-    color: white;
-    font: 700 13px Consolas, Monaco, monospace;
-  }
-
-  pre {
-    margin: 0 0 20px;
-    padding: 18px;
-    border-radius: 0 8px 8px 8px;
-    background: var(--code);
-    color: #e5edf7;
-    overflow: auto;
-    line-height: 1.55;
-    font-size: 15px;
-  }
-
-  code,
-  .inline-code {
-    font-family: Consolas, Monaco, monospace;
-  }
-
-  .inline-code {
-    padding: 2px 6px;
-    border-radius: 5px;
-    background: #e8eef7;
-    color: #0f172a;
-  }
-
-  .timeline {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 12px;
-    align-items: start;
-    border-bottom: 1px solid var(--line);
-    padding: 12px 0;
-  }
-
-  .time {
-    color: var(--rose);
-    font-weight: 800;
-  }
-
-  .callout-title {
-    margin: 0 0 8px;
-    font-weight: 800;
-  }
-
-  .script {
-    border-left: 5px solid var(--green);
-    background: #f7fff9;
-  }
-
-  .script p {
-    margin: 12px 0;
-    font-size: 17px;
-  }
-
-  .simple-note {
-    background: #fff;
-    border: 1px dashed #b7c4d6;
-  }
-
-  footer {
-    border-top: 1px solid var(--line);
-    margin-top: 42px;
-    padding-top: 22px;
-    color: var(--muted);
-  }
-
-  @media (max-width: 780px) {
-    .grid,
-    .three {
-      grid-template-columns: 1fr;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Day 1 & 2 - Programming Basics and Python Fundamentals</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --paper: #ffffff;
+      --ink: #162033;
+      --muted: #536173;
+      --brand: #2563eb;
+      --brand-dark: #1e3a8a;
+      --teal: #0f766e;
+      --green: #15803d;
+      --amber: #b45309;
+      --rose: #be123c;
+      --line: #d7e0ec;
+      --code: #0f172a;
+      --soft-blue: #eff6ff;
+      --soft-green: #ecfdf5;
+      --soft-amber: #fffbeb;
+      --soft-rose: #fff1f2;
+      --soft-teal: #f0fdfa;
     }
-
-    .timeline {
-      grid-template-columns: 1fr;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
     }
-  }
-</style>
+    header {
+      background: #121b2d;
+      color: white;
+      border-bottom: 5px solid var(--teal);
+    }
+    .hero, main {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .hero { padding: 42px 24px 38px; }
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 6px;
+      background: rgba(255,255,255,.10);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    h1 {
+      max-width: 920px;
+      margin: 18px 0 12px;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+    .hero p {
+      max-width: 980px;
+      margin: 0;
+      color: #e8eef9;
+      font-size: 18px;
+    }
+    main {
+      background: var(--paper);
+      padding: 26px 24px 90px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, .08);
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      margin: 0 -24px 26px;
+      padding: 14px 24px;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--brand-dark);
+      background: #fbfdff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    section { scroll-margin-top: 90px; }
+    .section-title {
+      margin: 42px 0 18px;
+      padding: 18px;
+      border-left: 6px solid var(--brand);
+      border-radius: 8px;
+      background: var(--soft-blue);
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.2;
+    }
+    .section-title p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+    h2, h3, h4 {
+      line-height: 1.28;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 30px 0 10px;
+      color: var(--brand-dark);
+      font-size: 25px;
+    }
+    h4 {
+      margin: 20px 0 8px;
+      color: var(--teal);
+      font-size: 19px;
+    }
+    p {
+      margin: 10px 0;
+      font-size: 17px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 20px;
+      margin: 18px 0;
+    }
+    .teacher { background: var(--soft-amber); border-left: 6px solid var(--amber); }
+    .concept { background: var(--soft-blue); border-left: 6px solid var(--brand); }
+    .practice { background: var(--soft-green); border-left: 6px solid var(--green); }
+    .story { background: var(--soft-teal); border-left: 6px solid var(--teal); }
+    .note { background: var(--soft-rose); border-left: 6px solid var(--rose); }
+    ul, ol { padding-left: 25px; }
+    li { margin: 8px 0; font-size: 16px; }
+    .code-title {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 12px;
+      border-radius: 8px 8px 0 0;
+      background: var(--code);
+      color: white;
+      font-family: Consolas, Monaco, monospace;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    pre {
+      margin: 0 0 18px;
+      padding: 18px;
+      overflow-x: auto;
+      background: var(--code);
+      color: #edf2ff;
+      border-radius: 0 8px 8px 8px;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    code {
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      background: #eef2f7;
+      color: #111827;
+      border-radius: 5px;
+      padding: 2px 5px;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eaf3ff;
+      color: var(--ink);
+      font-size: 16px;
+    }
+    td:first-child {
+      width: 74px;
+      font-weight: 700;
+      color: var(--brand-dark);
+    }
+    .output {
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 10px 0 20px;
+      white-space: pre-wrap;
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      font-size: 15px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .mini {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    @media (max-width: 820px) {
+      main { padding: 20px 14px 70px; }
+      nav { margin-left: -14px; margin-right: -14px; padding-left: 14px; padding-right: 14px; position: static; }
+      .summary-grid { grid-template-columns: 1fr; }
+      table { font-size: 14px; }
+      th, td { padding: 10px; }
+      pre { font-size: 14px; }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="hero-inner">
-    <span class="badge">Day 1 of 15 - Python for Data Science & Machine Learning</span>
-    <h1>Introduction to Programming & Python</h1>
-    <p class="hero-copy">Simple Hinglish classroom notes for a 4-5 hour session. Aap is page ko directly browser mein open karke students ko padha sakte ho: pehle paragraph-style explanation, phir real-life example, phir practical code, phir har line ka meaning.</p>
-  </div>
-</header>
-
-<main>
-  <nav>
-    <h2>Day 1 Roadmap</h2>
-    <div class="grid">
-      <ol>
-        <li><a href="#goal">Class Goal</a></li>
-        <li><a href="#programming">What is Programming?</a></li>
-        <li><a href="#python-intro">Introduction to Python</a></li>
-        <li><a href="#features">Features of Python</a></li>
-        <li><a href="#applications">Real-world Applications</a></li>
-      </ol>
-      <ol start="6">
-        <li><a href="#setup">Python, Anaconda, IDEs</a></li>
-        <li><a href="#running">Running Python Scripts</a></li>
-        <li><a href="#interpreter">Interpreter Basics</a></li>
-        <li><a href="#first-program">First Python Program</a></li>
-        <li><a href="#profile-lab">Student Profile Practical</a></li>
-        <li><a href="#homework">Recap & Homework</a></li>
-      </ol>
+  <header>
+    <div class="hero">
+      <span class="tag">Python for Data Science & Machine Learning</span>
+      <h1>Day 1 + Python Fundamentals: Programming, Python Basics, Variables, Data Types and Practical Coding</h1>
+      <p>
+        Ye page classroom teaching ke liye banaya gaya hai. Aap isko directly padhkar learners ko samjha sakte ho.
+        Language simple Hinglish hai, explanation paragraph format me hai, aur har practical ke baad code ka detailed
+        line-by-line explanation diya gaya hai.
+      </p>
     </div>
-  </nav>
-
-  <section id="goal" class="box motivation">
-    <h2>Teacher Opening - Class ko excite kaise karna hai</h2>
-    <p>Class start karte hi students ko yeh feel karwana hai ki Python sirf ek subject nahi hai. Python ek skill hai jisse woh apps bana sakte hain, data analyze kar sakte hain, automation kar sakte hain, aur aage machine learning projects tak ja sakte hain.</p>
-    <p>Aap bol sakte ho: "Aaj Day 1 hai. Aaj hum sirf Python ka dar khatam karenge. Day 15 tak aapko programming ka flow, data science ka base, aur machine learning project ka idea clear ho jayega."</p>
-  </section>
-
-  <section class="box script">
-    <h2>Direct Reading Opening Script - 10 to 15 Minutes</h2>
-    <p>Good morning everyone. Aaj hum Python for Data Science and Machine Learning journey ka Day 1 start kar rahe hain. Aaj ka session bahut important hai, kyunki aaj hum coding ke dar ko remove karenge. Aapme se kuch students ne pehle programming dekhi hogi, kuch students bilkul new honge, aur dono cases bilkul okay hain. Is class ka goal ye nahi hai ki aap Day 1 par expert ban jao. Is class ka goal ye hai ki aapko samajh aa jaye ki programming hoti kya hai, Python kyu use hota hai, aur computer ko simple instructions kaise dete hain.</p>
-    <p>Main chahata hoon ki aap ek cheez yaad rakho: programming ratta maarne wali cheez nahi hai. Programming thinking ka skill hai. Jaise maths mein question ko samajhna important hota hai, waise programming mein problem ko small steps mein todna important hota hai. Aaj hum isi thinking ko start karenge. Aap jitna zyada type karoge, run karoge, error dekhoge, aur correct karoge, utna zyada confidence build hoga.</p>
-    <p>Day 1 se Day 15 tak hum ek proper journey follow karenge. Pehle Python basics, phir variables, data types, conditions, loops, functions, strings, lists, dictionaries, then data science ka base, Pandas, NumPy, visualization, machine learning workflow, model training, prediction, aur projects. Matlab aaj jo ek simple <span class="inline-code">print()</span> statement se start hoga, wahi aage chal kar ML project ki foundation banega. Isliye aaj ka session slow, clear, aur practical rakhenge.</p>
-  </section>
-
-  <section class="box info">
-    <h2>15-Day Journey ka Big Picture</h2>
-    <p>PDF ke roadmap ke according course Programming se start hota hai, phir Python fundamentals, loops, functions, data structures, data science, NumPy, Pandas, visualization, machine learning, aur mini projects tak jata hai.</p>
-    <table>
-      <tr><th>Phase</th><th>Days</th><th>Student kya seekhega?</th></tr>
-      <tr><td>Foundation</td><td>Day 1 - Day 5</td><td>Programming thinking, Python syntax, variables, conditions, loops, functions, strings, lists, dictionaries.</td></tr>
-      <tr><td>Data Science Base</td><td>Day 6 - Day 9</td><td>Data Science, AI, ML, datasets, NumPy, Pandas, cleaning, visualization, EDA.</td></tr>
-      <tr><td>Machine Learning</td><td>Day 10 - Day 15</td><td>Supervised learning, regression, model training, prediction, evaluation, and projects.</td></tr>
-    </table>
-  </section>
-
-  <section class="box teacher">
-    <h2>Suggested Day 1 Teaching Flow - 4 to 5 Hours</h2>
-    <div class="timeline"><div class="time">0-20 min</div><div>Warm welcome, course excitement, student expectations, 15-day roadmap, and why Python matters for jobs, projects, automation, data science, and ML.</div></div>
-    <div class="timeline"><div class="time">20-55 min</div><div>What is programming, why computers need exact instructions, real-life algorithm examples, and classroom discussion.</div></div>
-    <div class="timeline"><div class="time">55-85 min</div><div>Program, algorithm, programming language, source code, output, and error ka basic meaning with easy examples.</div></div>
-    <div class="timeline"><div class="time">85-125 min</div><div>Introduction to Python, history, high-level language, interpreted language, and Python features in detail.</div></div>
-    <div class="timeline"><div class="time">125-145 min</div><div>Short break plus student Q&A. Ask 3-4 students to explain programming in their own words.</div></div>
-    <div class="timeline"><div class="time">145-185 min</div><div>Real-world applications of Python: web, automation, data science, AI, ML, cyber security, and student-focused examples.</div></div>
-    <div class="timeline"><div class="time">185-225 min</div><div>Python installation, Anaconda, VS Code, Jupyter Notebook, IDE options, PATH meaning, and setup troubleshooting.</div></div>
-    <div class="timeline"><div class="time">225-265 min</div><div>Running Python scripts, terminal basics, Python interpreter, interactive mode vs script mode, and first mini program.</div></div>
-    <div class="timeline"><div class="time">265-300 min</div><div>Main Day 1 practical, line-by-line explanation, student modifications, common errors, recap, homework, and Day 2 excitement.</div></div>
-  </section>
-
-  <section id="programming" class="section-title">
-    <h2>1. What is Programming?</h2>
-    <p>Programming ka simple meaning: computer ko step-by-step instructions dena.</p>
-  </section>
-
-  <p>Programming ek process hai jisme hum computer ko batate hain ki usse kya karna hai. Computer khud se smart decision nahi leta. Computer wahi karta hai jo hum usko instructions ke form mein dete hain.</p>
-  <p>Example: Agar aap kisi student se bolte ho "chai banao", toh student ko steps pata hone chahiye. Lekin computer ko har step clearly batana padta hai:</p>
-  <ol>
-    <li>Water garam karo.</li>
-    <li>Tea powder add karo.</li>
-    <li>Milk add karo.</li>
-    <li>Sugar add karo.</li>
-    <li>Boil karo.</li>
-    <li>Cup mein serve karo.</li>
-  </ol>
-
-  <div class="box info">
-    <p class="callout-title">Simple Definition</p>
-    <p>Programming means computer ko clear steps dena taaki woh koi task complete kar sake.</p>
-  </div>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Programming Explanation</h3>
-    <p>Students, programming ko ekdum simple language mein samjho. Jab hum kisi human ko kaam dete hain, human apni understanding use kar leta hai. Agar main aapse bolun ki fan on kar do, toh aap khud samajh jaoge ki switchboard kaha hai, kaunsa switch press karna hai, aur fan on ho gaya ya nahi check karna hai. Lekin computer ke paas human jaisi common sense nahi hoti. Computer ko exact instruction chahiye. Agar instruction clear nahi hai, computer confuse nahi hota, bas error de deta hai ya galat output de deta hai.</p>
-    <p>Programming ka kaam hai kisi bhi task ko itne clear steps mein todna ki computer usko follow kar sake. Isliye programmer ka main skill sirf code likhna nahi, balki problem ko small steps mein divide karna hai. Jab aap ek problem ko steps mein todna seekh jaate ho, tab programming language badal bhi jaye toh aapki thinking kaam aati hai.</p>
-    <p>Aaj hum code likhne se pehle yeh mindset build karenge ki computer ko command kaise deni hai. Ek program ek recipe jaisa hota hai. Recipe mein agar salt, sugar, timing, flame sab clear nahi hoga toh dish kharab ho sakti hai. Same programming mein agar step clear nahi hai toh output galat aa sakta hai. Isliye aaj ka first lesson hai: clear thinking leads to clear code.</p>
-  </div>
-
-  <h3>Program kya hota hai?</h3>
-  <p>Program instructions ka collection hota hai. Jaise recipe steps ka collection hoti hai, waise program computer instructions ka collection hota hai.</p>
-
-  <h3>Algorithm kya hota hai?</h3>
-  <p>Algorithm kisi problem ko solve karne ke steps hote hain. Code likhne se pehle hum sochte hain ki problem solve kaise hogi. Ye thinking hi algorithm hai.</p>
-  <table>
-    <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
-    <tr><td>Problem</td><td>Jo kaam solve karna hai</td><td>2 numbers ka sum find karna</td></tr>
-    <tr><td>Algorithm</td><td>Step-by-step plan</td><td>Number 1 lo, Number 2 lo, add karo, answer print karo</td></tr>
-    <tr><td>Program</td><td>Algorithm ko programming language mein likhna</td><td>Python code using input, +, print</td></tr>
-  </table>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Algorithm ko kaise samjhana hai</h3>
-    <p>Algorithm ka naam sunke students ko lag sakta hai ki ye difficult topic hai, lekin actually algorithm ka matlab hai plan. Agar hume do numbers add karne hain, toh hum directly code par jump nahi karenge. Pehle hum plan banayenge: pehla number lo, doosra number lo, dono ko add karo, result show karo. Ye four steps hi algorithm hain. Programming mein har big problem ko small algorithm steps mein break karna hota hai.</p>
-    <p>Ek aur example lete hain: student marks ka percentage calculate karna. Pehle student ka total marks lena hoga, phir obtained marks lena hoga, phir formula lagana hoga, phir percentage print karna hoga. Agar hum future mein Student Marks Management System project banayenge, toh wahi project bhi small-small algorithms ka collection hoga. Isliye Day 1 par algorithm samajhna bahut important hai.</p>
-    <p>Class activity ke liye students se bolo ki woh daily life ka koi task choose karein, jaise ATM se cash withdraw karna, online food order karna, ya mobile recharge karna. Phir unse steps likhwao. Jab students real-life steps likhenge, unko programming thinking naturally samajh aayegi.</p>
-  </div>
-
-  <h3>Programming Language kya hoti hai?</h3>
-  <p>Programming language ek language hai jisse human computer se baat karta hai. Human Hindi/English samajhta hai, computer machine code samajhta hai. Programming language beech ka bridge hai.</p>
-  <p>Examples: Python, Java, C, C++, JavaScript, Go, PHP, Ruby.</p>
-
-  <div class="box teacher">
-    <p class="callout-title">Teacher Tip</p>
-    <p>Students se pucho: "Agar Swiggy/Zomato app ko order place karna ho, toh steps kya honge?" Phir unke answers ko algorithm mein convert karao. Isse programming thinking naturally start hoti hai.</p>
-  </div>
-
-  <section id="python-intro" class="section-title">
-    <h2>2. Introduction to Python</h2>
-    <p>Python ek beginner-friendly, powerful, high-level programming language hai.</p>
-  </section>
-
-  <p>Python ka syntax simple hota hai, isliye beginners ke liye Python start karna easy hota hai. Python mein code English jaisa readable lagta hai. Isliye Python school, college, startups, data science, automation aur AI/ML mein bahut use hota hai.</p>
-  <p>Python ko Guido van Rossum ne create kiya tha. Python ka first public release 1991 mein aaya. Aaj Python duniya ki most popular programming languages mein se ek hai.</p>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Python Introduction</h3>
-    <p>Ab hum Python ko samjhte hain. Python ek programming language hai jo beginners ke liye friendly hai, lekin industry level par bhi powerful hai. Iska matlab ye nahi ki Python sirf easy toy language hai. Python se real companies production systems, automation tools, data pipelines, AI models, dashboards, APIs, aur machine learning projects banati hain.</p>
-    <p>Python ko popular banane wali sabse badi cheez uski readability hai. Jab aap Python code dekhte ho, toh bahut baar aapko idea lag jata hai ki code kya kar raha hai. Isi wajah se beginners ko Python mein entry lena comparatively easy hota hai. Agar student programming mein new hai, toh Python unko syntax ke heavy pressure se bachata hai aur logic par focus karne deta hai.</p>
-    <p>Is 15-day course mein Python humara base tool hoga. Aaj hum Python ko introduce karenge, Day 2 se Python ke building blocks samjhenge, phir dheere-dheere usi Python ka use data science aur machine learning mein karenge. Matlab aaj ka <span class="inline-code">print("Hello Python")</span> aage chal kar dataset load karne, graph banane, aur prediction model train karne tak connect hoga.</p>
-  </div>
-
-  <h3>High-level language ka meaning</h3>
-  <p>High-level language ka matlab hai language human ke close hoti hai. Programmer ko memory, CPU instructions, machine code jaisi low-level details usually handle nahi karni padti.</p>
-
-  <h3>Python ka simple code dekho</h3>
-  <span class="code-label">Python</span>
-  <pre><code>print("Hello Python")</code></pre>
-  <p>Sirf ek line se screen par message print ho jata hai. Isi simplicity ki wajah se Python beginners ko confidence deta hai.</p>
-
-  <section id="features" class="section-title">
-    <h2>3. Features of Python</h2>
-    <p>Python popular kyu hai? Features ko real examples ke saath samjho.</p>
-  </section>
-
-  <table>
-    <tr><th>Feature</th><th>Simple Hinglish Explanation</th><th>Class Example</th></tr>
-    <tr><td>Easy to Learn</td><td>Python syntax simple aur readable hota hai. English jaisa flow feel hota hai.</td><td><span class="inline-code">print("Hello")</span> se output aa jata hai.</td></tr>
-    <tr><td>Free and Open Source</td><td>Python free hai. Students bina paid license ke install aur use kar sakte hain.</td><td>Official website se Python download kar sakte hain.</td></tr>
-    <tr><td>Cross-platform</td><td>Same Python code Windows, macOS, Linux par run ho sakta hai.</td><td>Classroom Windows laptop aur teacher Mac dono par code run ho sakta hai.</td></tr>
-    <tr><td>Large Library Support</td><td>Python mein ready-made libraries milti hain, jaise NumPy, Pandas, Matplotlib, Scikit-learn.</td><td>Data Science mein CSV read karne ke liye Pandas use hota hai.</td></tr>
-    <tr><td>Interpreted Language</td><td>Python code line-by-line execute hota hai, isliye testing aur debugging easy hoti hai.</td><td>Ek line galat ho toh error samajhna comparatively easy hota hai.</td></tr>
-    <tr><td>Community Support</td><td>Python ki huge community hai. Problems ke solutions, tutorials, docs easily mil jaate hain.</td><td>Student error copy karke search kare toh help mil sakti hai.</td></tr>
-  </table>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Python Features ko detail mein explain karna</h3>
-    <p>Python ka first feature hai easy syntax. Easy syntax ka matlab ye nahi ki programming automatic ho jayegi, balki iska matlab hai ki language aapko unnecessary complexity mein nahi uljhati. Beginner ko pehle logic samajhna hota hai. Python us logic ko readable style mein likhne ka chance deta hai.</p>
-    <p>Second feature hai open source. Students ko paid software kharidne ki zaroorat nahi hoti. Aap Python free install kar sakte ho, practice kar sakte ho, projects bana sakte ho. Ye learning ke liye bahut important hai, kyunki student ghar par bhi same tools use kar sakta hai.</p>
-    <p>Third feature hai libraries. Library ko simple language mein ready-made toolbox samjho. Agar hume data table read karna hai, Pandas library help karegi. Agar hume numbers aur arrays par fast calculation karni hai, NumPy help karega. Agar hume chart banana hai, Matplotlib ya Seaborn help karega. Machine learning model ke liye Scikit-learn help karega. Isliye Python ecosystem bahut strong hai.</p>
-    <p>Fourth feature hai community support. Jab student error face karega, woh akela nahi hai. Python users duniya bhar mein hain, documentation hai, tutorials hain, Stack Overflow answers hain. Lekin ek warning bhi deni hai: copy-paste se learning nahi hoti. Error ko samajhna, code ko type karna, aur output observe karna learning ka real process hai.</p>
-  </div>
-
-  <div class="box motivation">
-    <p class="callout-title">Motivation Line</p>
-    <p>"Python aapko programming ke darwaze tak nahi, poore data science aur AI world ke andar le ja sakta hai. Day 1 par sirf start karna hai, perfect banna zaroori nahi."</p>
-  </div>
-
-  <section id="applications" class="section-title">
-    <h2>4. Real-world Applications of Python</h2>
-    <p>Students ko yeh samjhana zaroori hai ki Python seekhne ke baad use kaha karenge.</p>
-  </section>
-
-  <div class="grid three">
-    <div class="box"><h3>Web Development</h3><p>Python se websites aur APIs ban sakti hain. Frameworks: Django, Flask, FastAPI.</p></div>
-    <div class="box"><h3>Data Science</h3><p>Python se data clean, analyze, visualize aur report banaya ja sakta hai. Libraries: Pandas, NumPy, Matplotlib.</p></div>
-    <div class="box"><h3>Machine Learning</h3><p>Python se models train kiye ja sakte hain jo prediction karte hain. Example: house price prediction, marks prediction.</p></div>
-    <div class="box"><h3>Automation</h3><p>Repeated tasks automatically kar sakte ho: file rename, email report, Excel cleaning, web scraping.</p></div>
-    <div class="box"><h3>AI and Chatbots</h3><p>Python NLP, AI assistants, chatbot logic, image processing jaise areas mein use hota hai.</p></div>
-    <div class="box"><h3>Cyber Security</h3><p>Python scripting security testing, logs analysis, network automation mein useful hoti hai.</p></div>
-  </div>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Real-world Applications</h3>
-    <p>Students, ab sawal aata hai: Python seekhne ke baad practical use kya hai? Ye question important hai kyunki jab tak student ko purpose nahi dikhega, woh language ko boring subject samjhega. Python ka purpose bahut wide hai. Agar aap web development side jaana chahte ho, Python se backend APIs aur websites ban sakti hain. Agar aap data side jaana chahte ho, Python se Excel/CSV data clean, analyze, visualize, aur report ban sakti hai.</p>
-    <p>Automation mein Python bahut powerful hai. Suppose aapke paas 500 files hain jinke naam change karne hain. Manually karoge toh time lagega. Python script likhoge toh seconds mein kaam ho sakta hai. Suppose daily ek report banani hai, email send karna hai, web se data collect karna hai, folder organize karna hai, repeated Excel task karna hai, Python help kar sakta hai.</p>
-    <p>Machine learning mein Python aur bhi important ho jata hai. Machine learning ka matlab hota hai data se pattern seekhna aur prediction karna. Example ke liye student marks prediction, house price prediction, salary prediction, customer churn prediction, spam detection. Aage ke days mein jab hum ML model train karenge, toh aaj ka Python foundation hi kaam aayega. Isliye Day 1 simple lag sakta hai, lekin foundation strong banana zaroori hai.</p>
-  </div>
-
-  <section id="setup" class="section-title">
-    <h2>5. Installing Python, Anaconda, IDEs</h2>
-    <p>Day 1 par setup ka confidence dena important hai.</p>
-  </section>
-
-  <h3>Python install karna</h3>
-  <ol>
-    <li>Browser mein official Python website open karo: <span class="inline-code">python.org</span>.</li>
-    <li>Downloads section se latest stable Python download karo.</li>
-    <li>Windows par install karte time <strong>Add Python to PATH</strong> checkbox select karna important hai.</li>
-    <li>Install ke baad terminal/cmd open karke command run karo: <span class="inline-code">python --version</span>.</li>
-  </ol>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Installation and Setup</h3>
-    <p>Ab hum setup ki baat karte hain. Setup ka matlab hai woh environment ready karna jahan hum Python code likhenge aur run karenge. Students ko yeh samjhana important hai ki programming sirf theory se nahi aati. Code ko type karna, save karna, run karna, output dekhna, aur error fix karna zaroori hai. Isliye Day 1 mein hum environment ko comfortable banayenge.</p>
-    <p>Python install karte time Windows users ke liye ek important point hai: Add Python to PATH checkbox select karna. PATH ka simple meaning hai system ko batana ki Python command kaha available hai. Agar PATH set nahi hai, toh terminal mein <span class="inline-code">python</span> command recognize nahi hogi. Is case mein students confuse ho jaate hain ki Python install hai phir bhi run kyu nahi ho raha. Aap calmly explain karo ki ye setup issue hai, coding issue nahi.</p>
-    <p>Anaconda ko data science students ke liye helpful package samjho. Isme Python ke saath Jupyter Notebook aur data science tools easily available ho jaate hain. Jupyter Notebook mein code, output aur notes ek hi document mein hote hain, isliye data science teaching ke liye ye bahut useful hai. Lekin Day 1 par VS Code bhi equally fine hai, kyunki basic Python scripts ke liye VS Code clean aur practical environment deta hai.</p>
-  </div>
-
-  <h3>Anaconda kya hai?</h3>
-  <p>Anaconda ek distribution hai jo Python ke saath data science tools ready pack karke deta hai. Isme Python, Jupyter Notebook, Spyder, Conda package manager, aur common data science libraries easily manage ho jaati hain.</p>
-  <p>Data Science aur Machine Learning students ke liye Anaconda useful hota hai kyunki setup simple ho jata hai.</p>
-
-  <h3>IDE aur Code Editor kya hota hai?</h3>
-  <p>IDE ya code editor ek software hota hai jahan hum code likhte, save karte, run karte aur debug karte hain.</p>
-  <table>
-    <tr><th>Tool</th><th>Best Use</th><th>Beginner Note</th></tr>
-    <tr><td>VS Code</td><td>General Python programming</td><td>Lightweight, popular, extensions support.</td></tr>
-    <tr><td>Jupyter Notebook</td><td>Data Science, ML, experiments</td><td>Code + output + notes ek hi page par.</td></tr>
-    <tr><td>PyCharm</td><td>Large Python projects</td><td>Professional IDE, thoda heavy ho sakta hai.</td></tr>
-    <tr><td>IDLE</td><td>Very basic Python practice</td><td>Python ke saath default aata hai.</td></tr>
-  </table>
-
-  <div class="box teacher">
-    <p class="callout-title">Teacher Script</p>
-    <p>"Aaj agar kisi ka setup perfect nahi hua, panic nahi. Programming ka main skill thinking hai. Setup hum solve kar lenge. Pehle hum samjhenge ki code karta kya hai."</p>
-  </div>
-
-  <section id="running" class="section-title">
-    <h2>6. Running Python Scripts</h2>
-    <p>Python file ko save karke run karna Day 1 ka first confidence moment hota hai.</p>
-  </section>
-
-  <h3>Python file kya hoti hai?</h3>
-  <p>Python file ek text file hoti hai jiska extension <span class="inline-code">.py</span> hota hai. Example: <span class="inline-code">hello.py</span>, <span class="inline-code">day1.py</span>, <span class="inline-code">calculator.py</span>.</p>
-
-  <h3>Script run karne ke steps</h3>
-  <ol>
-    <li>VS Code open karo.</li>
-    <li>New file banao: <span class="inline-code">day1.py</span>.</li>
-    <li>Code likho: <span class="inline-code">print("Hello Python")</span>.</li>
-    <li>File save karo.</li>
-    <li>Terminal open karo.</li>
-    <li>Command run karo: <span class="inline-code">python day1.py</span>.</li>
-  </ol>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Python File Run Karna</h3>
-    <p>Ab students ko batana hai ki Python code likhne ke baad usko run kaise karte hain. Jab hum <span class="inline-code">day1.py</span> file banate hain, toh iska matlab hai hum ek Python script bana rahe hain. Script ek file hoti hai jisme instructions saved hoti hain. Jab hum terminal se <span class="inline-code">python day1.py</span> run karte hain, Python interpreter file ke andar wali lines ko read karta hai aur output show karta hai.</p>
-    <p>Yahan students ko terminal se dar lag sakta hai. Aap unko bol sakte ho ki terminal ek simple command box hai. Jaise phone mein search bar hota hai jahan hum type karke action karte hain, waise terminal mein hum command type karke computer se kaam karwate hain. Starting mein bas 2-3 commands yaad rakho: folder open karna, Python file run karna, aur version check karna.</p>
-    <p>Important habit ye hai ki code run karne se pehle file save karo. Bahut baar beginner code change karta hai, lekin save nahi karta, phir old output aata hai. Isliye har baar bolo: type, save, run, observe. Ye four-step habit programming confidence build karegi.</p>
-  </div>
-
-  <div class="box practice">
-    <p class="callout-title">Mini Practical</p>
-    <p>Students ko bolo apna naam print karne ka program likhein:</p>
-    <span class="code-label">Python</span>
-    <pre><code>print("My name is Ayesha")
-print("I am learning Python")</code></pre>
-  </div>
-
-  <section id="interpreter" class="section-title">
-    <h2>7. Python Interpreter Basics</h2>
-    <p>Interpreter Python code ko read karke execute karta hai.</p>
-  </section>
-
-  <p>Python interpreted language hai. Iska matlab Python interpreter code ko line-by-line read karta hai aur execute karta hai. Agar kisi line mein error hai, Python usually error message show karta hai jisse hum problem identify kar sakte hain.</p>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Interpreter Basics</h3>
-    <p>Python interpreter ko translator ki tarah samjho. Hum Python language mein code likhte hain, lekin computer internally machine level instructions understand karta hai. Interpreter humare Python code ko read karke execute karta hai. Python ka interpreter line-by-line kaam karta hai, isliye beginners ko output aur errors observe karna easy hota hai.</p>
-    <p>Jab code mein mistake hoti hai, toh Python error message deta hai. Error message dekhkar panic nahi karna. Error programming ka normal part hai. Professional developers bhi errors face karte hain. Difference bas itna hota hai ki experienced developer error ko read karke reason find karta hai. Aaj se hum bhi wahi habit start karenge: error aaya, line number dekho, message dekho, code compare karo, fix karo, phir run karo.</p>
-  </div>
-
-  <h3>Interpreter ka simple flow</h3>
-  <ol>
-    <li>Hum Python code likhte hain.</li>
-    <li>Python interpreter code read karta hai.</li>
-    <li>Interpreter computer ko batata hai kya karna hai.</li>
-    <li>Output screen par dikh jata hai.</li>
-  </ol>
-
-  <h3>Interactive Mode vs Script Mode</h3>
-  <table>
-    <tr><th>Mode</th><th>Meaning</th><th>Use Case</th></tr>
-    <tr><td>Interactive Mode</td><td>Terminal mein direct Python command likh ke result dekhna.</td><td>Quick testing, small calculations.</td></tr>
-    <tr><td>Script Mode</td><td>Code ko <span class="inline-code">.py</span> file mein save karke run karna.</td><td>Proper programs, practice files, projects.</td></tr>
-  </table>
-
-  <section id="first-program" class="section-title">
-    <h2>8. Writing First Python Program</h2>
-    <p>Ab Day 1 ka full practical program likhte hain.</p>
-  </section>
-
-  <p>Is practical ka goal hai students ko <span class="inline-code">print()</span>, <span class="inline-code">input()</span>, variable, string, number aur output ka basic feel dena. Day 2 mein variables/data types detail mein aayenge, lekin Day 1 par taste dena useful hai.</p>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Practical Start Karne Se Pehle</h3>
-    <p>Ab hum Day 1 ka main practical start karenge. Is practical mein hum bahut advanced cheez nahi kar rahe, lekin ye program beginner ke liye bahut important hai. Kyunki isme hum output show karenge, user se input lenge, value ko variable mein store karenge, aur final message print karenge. Ye four ideas programming ke basic building blocks hain.</p>
-    <p>Students, aap sirf code dekhna nahi, code type karna. Jab aap khud keyboard se code type karte ho, tab aapko brackets, quotes, spelling, spacing, aur syntax ka feel aata hai. Agar aap sirf screen dekhoge, toh easy lagega. Lekin jab khud type karoge, tab real learning start hogi. Agar error aaye, toh woh problem nahi hai. Error ka matlab hai Python aapko feedback de raha hai.</p>
-    <p>Main pehle code likhunga, phir run karunga, phir har line explain karunga. Uske baad aap same code apne name ke saath run karoge. Phir hum program ko thoda modify karenge, jaise city add karna, goal add karna, ya course duration change karna. Isi process se aapko programming mein confidence aayega.</p>
-  </div>
-
-  <span class="code-label">examples/day1_practice.py</span>
-  <pre><code>print("Welcome to Day 1 of Python!")
-
-student_name = input("Enter your name: ")
-course_name = "Python for Data Science & Machine Learning"
-total_days = 15
-current_day = 1
-
-print("Hello", student_name)
-print("Course:", course_name)
-print("Today is Day", current_day, "out of", total_days)
-print("By Day 15, you will understand Python basics, data handling, and ML project flow.")
-print("Today's promise:", student_name, "will write Python code daily.")</code></pre>
-
-  <h3>Expected Output Example</h3>
-  <span class="code-label">Terminal</span>
-  <pre><code>Welcome to Day 1 of Python!
-Enter your name: Rahul
-Hello Rahul
-Course: Python for Data Science & Machine Learning
-Today is Day 1 out of 15
-By Day 15, you will understand Python basics, data handling, and ML project flow.
-Today's promise: Rahul will write Python code daily.</code></pre>
-
-  <h3>Line-by-Line Explanation - Simple Hinglish</h3>
-  <table>
-    <tr><th>Code Line</th><th>Detailed Explanation</th></tr>
-    <tr><td><span class="inline-code">print("Welcome to Day 1 of Python!")</span></td><td><span class="inline-code">print()</span> Python ka built-in function hai jo screen par output show karta hai. Double quotes ke andar jo text hai, woh exactly screen par dikh jayega. Is line se student ko first output ka confidence milta hai.</td></tr>
-    <tr><td><span class="inline-code">student_name = input("Enter your name: ")</span></td><td><span class="inline-code">input()</span> user se value leta hai. Brackets ke andar message prompt hota hai. User jo naam type karega, woh <span class="inline-code">student_name</span> variable ke andar store ho jayega. Variable ek box ki tarah hota hai jisme value rakhi ja sakti hai.</td></tr>
-    <tr><td><span class="inline-code">course_name = "Python for Data Science & Machine Learning"</span></td><td>Yahan <span class="inline-code">course_name</span> naam ka variable ban raha hai. Is variable ke andar course ka text store ho raha hai. Text value ko string bolte hain. String ko quotes ke andar likhte hain.</td></tr>
-    <tr><td><span class="inline-code">total_days = 15</span></td><td>Yahan <span class="inline-code">total_days</span> variable mein number 15 store ho raha hai. Ye batata hai ki course total 15 days ka hai. Number ke around quotes nahi lagaye, kyunki ye numeric value hai.</td></tr>
-    <tr><td><span class="inline-code">current_day = 1</span></td><td>Yahan current day ka number store ho raha hai. Aaj Day 1 hai, isliye value 1 hai. Future mein Day 2 par ye value 2 ho sakti hai.</td></tr>
-    <tr><td><span class="inline-code">print("Hello", student_name)</span></td><td>Ye line two things print kar rahi hai: fixed text <span class="inline-code">Hello</span> aur user ka naam. Comma use karne se Python dono values ko space ke saath output mein show karta hai.</td></tr>
-    <tr><td><span class="inline-code">print("Course:", course_name)</span></td><td>Yahan <span class="inline-code">Course:</span> label print hota hai, phir <span class="inline-code">course_name</span> variable ki value print hoti hai. Isse output readable banta hai.</td></tr>
-    <tr><td><span class="inline-code">print("Today is Day", current_day, "out of", total_days)</span></td><td>Is line mein fixed text aur variables mix hain. Python pehle text print karta hai, phir <span class="inline-code">current_day</span> ki value, phir text <span class="inline-code">out of</span>, phir <span class="inline-code">total_days</span> ki value. Output sentence jaisa ban jata hai.</td></tr>
-    <tr><td><span class="inline-code">print("By Day 15, you will understand Python basics, data handling, and ML project flow.")</span></td><td>Ye motivation line hai. Programming class mein emotional confidence bhi important hota hai. Student ko clear destination milta hai ki aage kya seekhne wale hain.</td></tr>
-    <tr><td><span class="inline-code">print("Today's promise:", student_name, "will write Python code daily.")</span></td><td>Ye line same variable ko dobara use karti hai. Student ka naam output mein personal commitment ke saath print hota hai, isliye program zyada interesting feel hota hai.</td></tr>
-  </table>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Code ko paragraph mein samjhana</h3>
-    <p>Is program ki first line <span class="inline-code">print("Welcome to Day 1 of Python!")</span> hai. Yahan Python ko bola ja raha hai ki screen par welcome message show karo. <span class="inline-code">print</span> ek ready-made function hai. Function ko aap ek ready-made action samajh sakte ho. Jaise remote ka power button press karte hi TV on hota hai, waise <span class="inline-code">print()</span> call karte hi screen par output aata hai. Brackets ke andar jo text hai, woh message hai.</p>
-    <p>Second important line hai <span class="inline-code">student_name = input("Enter your name: ")</span>. Yahan hum user se name pooch rahe hain. <span class="inline-code">input()</span> screen par prompt show karta hai aur keyboard se typed value receive karta hai. Jo value user type karega, woh <span class="inline-code">student_name</span> variable mein store hogi. Variable ko ek labelled container samjho. Label hai <span class="inline-code">student_name</span>, aur container ke andar user ka naam rakha hua hai.</p>
-    <p>Next lines mein hum course name, total days, aur current day store kar rahe hain. Yahan ek important observation hai: course name text hai, isliye quotes mein hai. Total days aur current day numbers hain, isliye quotes mein nahi hain. Day 2 mein hum data types detail mein karenge, lekin aaj se hi ye observe karna start karo ki Python mein text aur number alag tarah treat hote hain.</p>
-    <p>Last print lines mein hum fixed text aur variables ko combine karke output bana rahe hain. Jab hum comma use karte hain, Python automatically values ke beech space add kar deta hai. Isse beginner ke liye sentence banana easy ho jata hai. Aage hum f-string bhi seekhenge, lekin Day 1 ke liye comma style simple aur readable hai.</p>
-    <p>Promise line ko class mein thoda personal banao. Har student apna naam enter karega, aur output mein uska naam commitment ke saath print hoga. Beginner ko jab apna naam output mein dikhta hai, toh program uske liye real feel hota hai.</p>
-  </div>
-
-  <h3>Important Concepts from This Practical</h3>
-  <div class="grid">
-    <div class="box"><h4>Output</h4><p><span class="inline-code">print()</span> se hum screen par message show karte hain.</p></div>
-    <div class="box"><h4>Input</h4><p><span class="inline-code">input()</span> se hum user se data lete hain.</p></div>
-    <div class="box"><h4>Variable</h4><p>Variable ek named box hai jisme value store karte hain.</p></div>
-    <div class="box"><h4>String</h4><p>Quotes ke andar likha hua text string hota hai.</p></div>
-  </div>
-
-  <section id="profile-lab" class="section-title">
-    <h2>9. Practical Lab - Student Profile Generator</h2>
-    <p>5-hour session ke liye detailed guided practical.</p>
-  </section>
-
-  <div class="box simple-note">
-    <h3>Lab Goal</h3>
-    <p>Is lab mein students ek chhota sa Student Profile Generator banayenge. Program student ka name, city, learning goal, aur daily practice hours input lega. Phir program ek clean profile summary print karega. Ye practical beginner-friendly hai, lekin output personalized hai, isliye students ko interesting lagega.</p>
-    <p>Teacher flow simple rakho: pehle aap output dikhao, phir code type karvao, phir har line explain karo, phir students ko modifications do. Is practical se input, output, variables, strings, blank line, readable output, and debugging ka base clear hoga.</p>
-  </div>
-
-  <span class="code-label">examples/day1_student_profile.py</span>
-  <pre><code>print("Student Profile Generator")
-print("-------------------------")
-
-name = input("Enter your name: ")
-city = input("Enter your city: ")
-goal = input("Enter your learning goal: ")
-daily_hours = input("How many hours will you practice daily? ")
-
-print("")
-print("Profile Summary")
-print("Name:", name)
-print("City:", city)
-print("Goal:", goal)
-print("Daily Practice:", daily_hours, "hours")
-print("Message:", name, "is ready to learn Python step by step.")</code></pre>
-
-  <h3>Expected Output Example</h3>
-  <span class="code-label">Terminal</span>
-  <pre><code>Student Profile Generator
--------------------------
-Enter your name: Ayesha
-Enter your city: Delhi
-Enter your learning goal: Data Science
-How many hours will you practice daily? 2
-
-Profile Summary
-Name: Ayesha
-City: Delhi
-Goal: Data Science
-Daily Practice: 2 hours
-Message: Ayesha is ready to learn Python step by step.</code></pre>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Student Profile Practical</h3>
-    <p>Ab hum ek interesting program banayenge jiska naam hai Student Profile Generator. Is program mein computer humse kuch questions poochega: name, city, learning goal, aur daily practice hours. Phir computer humare answers ko use karke ek profile summary print karega. Real websites mein bhi forms hote hain jahan user data enter karta hai, phir system us data ko process karke display karta hai. Ye usi idea ka beginner version hai.</p>
-    <p>First two lines program ka title print kar rahi hain. Title dene se output professional lagta hai. Next lines input leti hain. Har input ko alag variable mein store kiya gaya hai: <span class="inline-code">name</span>, <span class="inline-code">city</span>, <span class="inline-code">goal</span>, aur <span class="inline-code">daily_hours</span>. Yahan students ko samjhana hai ki variable ka naam meaningful hona chahiye. Meaningful names code ko readable banate hain.</p>
-    <p><span class="inline-code">print("")</span> ek blank line print karta hai. Ye output ko clean banata hai. Programming mein sirf code chalna important nahi hai; output readable hona bhi important hai. Last lines profile summary print kar rahi hain. Yahan fixed labels jaise <span class="inline-code">Name:</span> aur variables ko combine kiya gaya hai. Isse output structured lagta hai.</p>
-    <p>Is practical ke end mein students ko bolna hai ki apna real goal likhein. Kisi ka goal data analyst banna ho sakta hai, kisi ka automation seekhna ho sakta hai, kisi ka ML project banana ho sakta hai. Jab program unka goal print karega, class mein personal connection banega.</p>
-  </div>
-
-  <h3>Student Profile Code - Line by Line</h3>
-  <table>
-    <tr><th>Line</th><th>Simple Explanation</th></tr>
-    <tr><td><span class="inline-code">print("Student Profile Generator")</span></td><td>Program ka heading screen par print hota hai. Heading se user ko samajh aata hai program kis kaam ke liye hai.</td></tr>
-    <tr><td><span class="inline-code">print("-------------------------")</span></td><td>Ye separator hai. Output ko clean aur readable banata hai.</td></tr>
-    <tr><td><span class="inline-code">name = input("Enter your name: ")</span></td><td>User se name poochta hai aur answer <span class="inline-code">name</span> variable mein store karta hai.</td></tr>
-    <tr><td><span class="inline-code">city = input("Enter your city: ")</span></td><td>User se city poochta hai. City value ko baad mein summary mein use karenge.</td></tr>
-    <tr><td><span class="inline-code">goal = input("Enter your learning goal: ")</span></td><td>User ka learning goal store hota hai. Isse program personal feel hota hai.</td></tr>
-    <tr><td><span class="inline-code">daily_hours = input("How many hours will you practice daily? ")</span></td><td>User se daily practice hours poochta hai. Day 2 mein hum discuss karenge ki input by default string hota hai.</td></tr>
-    <tr><td><span class="inline-code">print("")</span></td><td>Blank line print hoti hai. Output sections ke beech gap aata hai.</td></tr>
-    <tr><td><span class="inline-code">print("Profile Summary")</span></td><td>Final output section ka title print hota hai.</td></tr>
-    <tr><td><span class="inline-code">print("Name:", name)</span></td><td>Label aur user ka entered name print hota hai.</td></tr>
-    <tr><td><span class="inline-code">print("Daily Practice:", daily_hours, "hours")</span></td><td>Fixed text, variable, aur unit ko combine karke readable sentence banaya gaya hai.</td></tr>
-    <tr><td><span class="inline-code">print("Message:", name, "is ready to learn Python step by step.")</span></td><td>Variable ko sentence ke beech mein use kiya gaya hai. Isse dynamic message banta hai.</td></tr>
-  </table>
-
-  <div class="box practice">
-    <h3>Practical Timing for 5-Hour Session</h3>
-    <p><strong>First 10 minutes:</strong> Teacher code run karke expected output dikhaye. Students sirf observe karein.</p>
-    <p><strong>Next 20 minutes:</strong> Students code type karein. Teacher spelling, quotes, brackets, save/run flow check kare.</p>
-    <p><strong>Next 20 minutes:</strong> Har line ka explanation. Students se pucho: variable ka naam kya hai, input prompt kya hai, output label kya hai.</p>
-    <p><strong>Next 20 minutes:</strong> Students modifications karein: age add karo, college add karo, favorite technology add karo.</p>
-    <p><strong>Last 10 minutes:</strong> 3 students apna output class mein show/read karein. Teacher common mistakes recap kare.</p>
-  </div>
-
-  <section class="section-title">
-    <h2>10. Classroom Practice Tasks</h2>
-    <p>Students ko typing aur small modification karwana zaroori hai.</p>
-  </section>
-
-  <div class="box practice">
-    <h3>Task 1 - Personal Introduction Program</h3>
-    <p>Student apna name, city, aur goal input kare. Output ek introduction sentence hona chahiye.</p>
-    <span class="code-label">Starter Idea</span>
-    <pre><code>name = input("Enter your name: ")
-city = input("Enter your city: ")
-goal = input("Enter your learning goal: ")
-
-print("My name is", name)
-print("I am from", city)
-print("My goal is", goal)</code></pre>
-  </div>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Practice ko kaise conduct karna hai</h3>
-    <p>Ab main students ko 10-15 minutes dunga ki woh Personal Introduction Program khud type karein. Is time par aap class mein circulate karo aur dekho ki students quotes, brackets, spelling aur file save karna sahi kar rahe hain ya nahi. Agar kisi student ka code run nahi ho raha, turant answer mat do. Pehle usse pucho: error line number kya bol raha hai? Function spelling correct hai? Quotes close hain? File save hai?</p>
-    <p>Practice ka goal perfect answer nahi hai. Goal ye hai ki student apne haath se code type kare aur output dekhe. Jab output screen par aata hai, beginner ko first achievement feel hoti hai. Aap 2-3 students ko apna output class ke saamne read karne ko bol sakte ho. Isse class mein energy bani rahegi aur students ko lagega ki woh actual program bana rahe hain.</p>
-    <p>Agar time zyada hai, toh extension do: program mein age add karo, favorite subject add karo, aur ek motivational line print karo. Example: "I will practice Python daily for 15 days." Isse students ko variable add karne ka pattern repeat hota hai.</p>
-  </div>
-
-  <div class="box practice">
-    <h3>Task 2 - Mini ID Card Program</h3>
-    <p>Student ek mini ID card output banaye. Isme name, course, batch, city, aur goal print hona chahiye. Is task se students ko readable output formatting ka idea milega.</p>
-    <span class="code-label">Starter Code</span>
-    <pre><code>name = input("Name: ")
-course = input("Course: ")
-batch = input("Batch: ")
-city = input("City: ")
-goal = input("Goal: ")
-
-print("")
-print("----- Student ID Card -----")
-print("Name:", name)
-print("Course:", course)
-print("Batch:", batch)
-print("City:", city)
-print("Goal:", goal)
-print("---------------------------")</code></pre>
-  </div>
-
-  <div class="box practice">
-    <h3>Task 3 - Course Commitment Program</h3>
-    <p>Student course name aur daily study hours enter kare. Program commitment message print kare.</p>
-    <span class="code-label">Starter Code</span>
-    <pre><code>name = input("Enter your name: ")
-course = input("Enter course name: ")
-hours = input("Daily practice hours: ")
-
-print(name, "has joined", course)
-print(name, "will practice", hours, "hours daily")
-print("Small daily practice will create big improvement.")</code></pre>
-  </div>
-
-  <div class="box practice">
-    <h3>Task 4 - Error Challenge</h3>
-    <p>Teacher board par intentionally wrong code likhe. Students ko error find karna hai. Isse debugging ek fun activity ban jaati hai.</p>
-    <span class="code-label">Wrong Code</span>
-    <pre><code>pritn("Welcome")
-name = input("Enter name: "
-print("Hello", name)</code></pre>
-    <p>Students ko identify karna hai: <span class="inline-code">print</span> spelling wrong hai, input line mein closing bracket missing hai. Phir students correct code likhein.</p>
-  </div>
-
-  <section class="section-title">
-    <h2>11. Common Beginner Errors</h2>
-    <p>Day 1 par errors normal hain. Error ka dar remove karna teacher ka kaam hai.</p>
-  </section>
-
-  <table>
-    <tr><th>Error</th><th>Wrong Code</th><th>Correct Code</th><th>Simple Explanation</th></tr>
-    <tr><td>Missing quotes</td><td><span class="inline-code">print(Hello)</span></td><td><span class="inline-code">print("Hello")</span></td><td>Text ko quotes ke andar likhna hota hai.</td></tr>
-    <tr><td>Spelling mistake</td><td><span class="inline-code">pritn("Hi")</span></td><td><span class="inline-code">print("Hi")</span></td><td>Function ka name exactly correct hona chahiye.</td></tr>
-    <tr><td>Missing bracket</td><td><span class="inline-code">print("Hi"</span></td><td><span class="inline-code">print("Hi")</span></td><td>Opening bracket ka closing bracket bhi hona chahiye.</td></tr>
-    <tr><td>File not saved</td><td>Old output aa raha hai</td><td>Save then run</td><td>Run karne se pehle file save karna zaroori hai.</td></tr>
-  </table>
-
-  <div class="box script">
-    <h3>Direct Reading Script - Errors ko positive way mein explain karna</h3>
-    <p>Students, ab hum errors ki baat karenge. Programming mein error ka matlab failure nahi hota. Error ka matlab hai computer aapko bata raha hai ki code mein kuch instruction unclear hai. Beginners jab error dekhte hain toh unko lagta hai "mujhse coding nahi hogi", lekin ye wrong thinking hai. Har programmer error face karta hai.</p>
-    <p>Agar <span class="inline-code">print</span> ki spelling galat hai, Python samajh nahi paayega ki aap kya karna chahte ho. Agar quotes missing hain, Python text ko variable samajhne ki koshish karega. Agar bracket close nahi hai, Python ko line complete nahi lagegi. Ye sab common mistakes hain. In mistakes se bachne ka best tareeka hai code slowly type karna, pair checking karna, aur error message ko read karna.</p>
-    <p>Class mein ek useful activity ye hai ki aap jaan-bujhkar galat code likho, jaise <span class="inline-code">pritn("Hello")</span>, phir students se pucho error kyu aaya. Jab student error identify karta hai, uski debugging skill start hoti hai. Debugging programming ka superpower hai.</p>
-  </div>
-
-  <section id="homework" class="section-title">
-    <h2>12. Recap, Homework, and Day 2 Hook</h2>
-    <p>End strong. Students ko clear feel hona chahiye ki unhone kuch banaya hai.</p>
-  </section>
-
-  <h3>Day 1 Recap</h3>
-  <ul>
-    <li>Programming means computer ko step-by-step instructions dena.</li>
-    <li>Algorithm means problem solve karne ka plan.</li>
-    <li>Python beginner-friendly aur powerful programming language hai.</li>
-    <li>Python web development, automation, data science, AI, ML mein use hota hai.</li>
-    <li>Python code <span class="inline-code">.py</span> file mein save karke run karte hain.</li>
-    <li><span class="inline-code">print()</span> output show karta hai.</li>
-    <li><span class="inline-code">input()</span> user se value leta hai.</li>
-    <li>Variable value store karne ke liye use hota hai.</li>
-  </ul>
-
-  <div class="box script">
-    <h3>Direct Reading Closing Script - 10 Minutes</h3>
-    <p>Aaj humne Python journey ka foundation start kiya. Humne samjha ki programming ka matlab computer ko clear instructions dena hai. Humne algorithm ka idea samjha, jiska simple meaning hai problem solve karne ka step-by-step plan. Humne Python introduce kiya aur dekha ki Python beginner-friendly hone ke saath-saath data science aur machine learning ke liye powerful language hai.</p>
-    <p>Aaj ka sabse important practical tha first Python program run karna. Agar aapne aaj <span class="inline-code">print()</span>, <span class="inline-code">input()</span>, variable, file save, terminal run, aur error observe karna samajh liya, toh aapne programming ka first gate cross kar liya. Ab Day 2 mein hum variables, naming rules, data types, type casting, input-output, comments aur syntax ko detail mein karenge.</p>
-    <p>Homework seriously karna, kyunki programming sirf class sunne se nahi aati. Programming typing, running, failing, fixing aur repeat karne se aati hai. Aap jitna practice karoge, Day 15 tak utna strong output milega. Aaj ka target expert banna nahi tha; aaj ka target start karna tha. Aur start ho gaya.</p>
-  </div>
-
-  <h3>Homework</h3>
-  <ol>
-    <li>Python install karke <span class="inline-code">python --version</span> command run karo.</li>
-    <li>VS Code ya Jupyter Notebook setup karo.</li>
-    <li>Ek file banao: <span class="inline-code">my_intro.py</span>.</li>
-    <li>Program likho jo name, city, age, goal input le aur output print kare.</li>
-    <li>Program ko kam se kam 3 baar different inputs ke saath run karo.</li>
-  </ol>
-
-  <div class="box motivation">
-    <p class="callout-title">Day 2 Hook</p>
-    <p>"Aaj humne value store karne ke liye variable ka taste liya. Kal Day 2 mein hum variables, naming rules, data types, input-output aur type casting ko detail mein samjhenge. Kal ke baad aap proper small programs likhna start kar doge."</p>
-  </div>
-
-  <footer>
-    <p>Prepared for Day 1 classroom teaching: Introduction to Programming & Python. Language: simple Hinglish. Source roadmap: Python for Data Science & Machine Learning 15-day training PDF.</p>
-  </footer>
-</main>
+  </header>
+
+  <main>
+    <nav>
+      <div class="nav-wrap">
+        <a href="#session-plan">Session Plan</a>
+        <a href="#part-1">Programming & Python</a>
+        <a href="#part-2">Python Fundamentals</a>
+        <a href="#practicals">Practicals</a>
+        <a href="#homework">Practice Tasks</a>
+      </div>
+    </nav>
+
+    <section id="session-plan">
+      <div class="section-title">
+        <h2>Complete Session Flow</h2>
+        <p>Is flow ko follow karke aap 4-5 hours ka strong beginner-friendly Python session le sakte ho.</p>
+      </div>
+
+      <div class="card teacher">
+        <h3>Opening Script for Learners</h3>
+        <p>
+          Aaj hum programming aur Python ka foundation start kar rahe hain. Programming ka matlab sirf code likhna nahi hota,
+          programming ka matlab hota hai computer ko clear instructions dena. Jaise hum daily life me kisi person ko step by
+          step kaam batate hain, waise hi programming me hum computer ko step by step instructions dete hain. Agar instruction
+          clear hoga to computer correct output dega, aur agar instruction galat ya incomplete hoga to output bhi galat aayega.
+        </p>
+        <p>
+          Python beginners ke liye best language hai kyunki iska syntax simple English jaisa hota hai. Aap pehle din se hi
+          code likhna start kar sakte ho. Aaj ka goal ye nahi hai ki aap expert ban jao, aaj ka goal ye hai ki aapko confidence
+          aaye ki Python kya hai, code kaise run hota hai, variable kya hota hai, data type kya hota hai, input-output kaise
+          handle hota hai, aur small programs kaise banate hain.
+        </p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="mini"><h4>Hour 1</h4><p>Programming kya hoti hai, Python kya hai, interpreter ka role kya hai, aur first program kaise run hota hai.</p></div>
+        <div class="mini"><h4>Hour 2</h4><p>Variables, naming rules, comments, basic syntax, aur data store karne ka concept.</p></div>
+        <div class="mini"><h4>Hour 3</h4><p>Data types, type casting, input/output handling, aur real-world examples.</p></div>
+        <div class="mini"><h4>Hour 4</h4><p>Practical programs: student profile, marks calculator, bill calculator, and mini practice tasks.</p></div>
+        <div class="mini"><h4>Hour 5</h4><p>Revision, doubt clearing, student hands-on practice, and homework explanation.</p></div>
+      </div>
+    </section>
+
+    <section id="part-1">
+      <div class="section-title">
+        <h2>Part 1 - Introduction to Programming & Python</h2>
+        <p>Topics: What is Programming, Introduction to Python, Python Interpreter Basics, Writing First Python Program.</p>
+      </div>
+
+      <article class="card concept">
+        <h3>1. What is Programming?</h3>
+        <p>
+          Programming ka simple meaning hai computer ko instructions dena. Computer apne aap decide nahi karta ki kya karna hai.
+          Computer ko har kaam ke liye exact steps chahiye hote hain. Agar hum computer ko bolte hain ki two numbers add karo,
+          to hume batana padega kaunse two numbers add karne hain, result kahan store karna hai, aur result user ko kaise dikhana hai.
+        </p>
+        <p>
+          Real life example se samjho: agar aap kisi ko chai banane ke liye bolte ho, to steps honge paani garam karo, chai patti
+          dalo, doodh dalo, sugar dalo, boil karo, cup me serve karo. Agar koi step miss ho gaya to chai proper nahi banegi. Same
+          programming me bhi hota hai. Program ek recipe jaisa hota hai, aur computer us recipe ko follow karke output deta hai.
+        </p>
+        <p>
+          Programming ka fayda ye hai ki hum repetitive tasks automate kar sakte hain. Jaise marks calculate karna, bill generate
+          karna, report banana, attendance maintain karna, data analyze karna, website chalana, machine learning model train karna,
+          sab programming se possible hota hai.
+        </p>
+      </article>
+
+      <article class="card concept">
+        <h3>2. Introduction to Python</h3>
+        <p>
+          Python ek high-level programming language hai. High-level ka matlab hai ki iska syntax human-friendly hota hai. Python
+          me code simple English words jaisa lagta hai, isliye beginners ke liye Python start karna easy hota hai. Python ka use
+          web development, data science, machine learning, automation, artificial intelligence, scripting, testing, and software
+          development me hota hai.
+        </p>
+        <p>
+          Python ka biggest advantage readability hai. Readability ka matlab hai code ko padhkar samajhna easy hota hai. Jab team
+          me multiple developers kaam karte hain, readable code bahut important hota hai. Agar code readable hoga to debug karna,
+          maintain karna, aur improve karna easy hota hai.
+        </p>
+        <p>
+          Data Science aur Machine Learning ke liye Python bahut popular hai kyunki Python me powerful libraries available hain,
+          jaise NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, TensorFlow, PyTorch, OpenCV, etc. Aaj hum Python ka foundation
+          strong karenge, kyunki future me data science ke concepts isi foundation par build honge.
+        </p>
+      </article>
+
+      <article class="card concept">
+        <h3>3. Python Interpreter Basics</h3>
+        <p>
+          Python interpreter ek software hota hai jo Python code ko read karta hai aur execute karta hai. Jab hum Python file run
+          karte hain, interpreter line by line code ko samajhta hai. Agar code correct hai to output deta hai, aur agar code me
+          mistake hai to error message show karta hai.
+        </p>
+        <p>
+          Interpreter ko teacher ki tarah samjho. Aap code likhte ho, interpreter us code ko check karta hai, phir computer ko
+          batata hai ki kya karna hai. Python interpreted language hai, isliye Python beginners ke liye comfortable hota hai.
+          Aap small code likho, run karo, output dekho, error aaye to fix karo. Ye learning cycle bahut fast hoti hai.
+        </p>
+        <p>
+          Python code run karne ke common ways hain: Python shell me direct commands run karna, `.py` file banakar terminal se run
+          karna, Jupyter Notebook me cell by cell run karna, ya VS Code/PyCharm jaise editor me run karna. Beginners ke liye
+          Jupyter Notebook aur VS Code dono helpful hain.
+        </p>
+      </article>
+
+      <article class="card practice">
+        <h3>4. Writing First Python Program</h3>
+        <p>
+          First program ka goal simple hota hai: hum check karte hain ki Python properly installed hai ya nahi, aur hum output screen
+          par print kar sakte hain ya nahi. Python me output show karne ke liye <code>print()</code> function use hota hai. Function ek
+          ready-made tool hota hai jo specific kaam karta hai. <code>print()</code> ka kaam hai message ya value ko screen par show karna.
+        </p>
+
+        <span class="code-title">Practice Code 1 - First Python Program</span>
+        <pre><code>print("Hello Learners")
+print("Welcome to Python Programming")
+print("Today we are starting our coding journey")</code></pre>
+
+        <h4>Output</h4>
+        <div class="output">Hello Learners
+Welcome to Python Programming
+Today we are starting our coding journey</div>
+
+        <h4>Detailed Code Explanation</h4>
+        <table>
+          <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>print("Hello Learners")</code></td><td>Is line me <code>print()</code> function use hua hai. <code>print()</code> Python ka built-in function hai, matlab ye Python ke andar already available hota hai. Double quotes ke andar jo text likha hai, usko string bolte hain. Jab ye line run hoti hai, Python screen par <code>Hello Learners</code> show karta hai. Ye line learners ko ye batati hai ki Python me message show karna bahut simple hai.</td></tr>
+            <tr><td>2</td><td><code>print("Welcome to Python Programming")</code></td><td>Ye line second message print karti hai. Python line by line execute hota hai, isliye pehle line 1 ka output aata hai, phir line 2 ka output aata hai. Yahan hum ek welcome message show kar rahe hain. Isse students ko samajh aata hai ki ek program me multiple <code>print()</code> statements likh sakte hain.</td></tr>
+            <tr><td>3</td><td><code>print("Today we are starting our coding journey")</code></td><td>Ye line third message print karti hai. Har <code>print()</code> by default new line me output show karta hai. Isliye teeno messages alag-alag lines me dikh rahe hain. Is concept se students ko basic output formatting ka first idea milta hai.</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section id="part-2">
+      <div class="section-title">
+        <h2>Part 2 - Python Fundamentals</h2>
+        <p>Topics: Variables, Naming Rules, Data Types, Type Casting, Input Output, Comments, Syntax, and Basic Practice.</p>
+      </div>
+
+      <article class="card concept">
+        <h3>5. Variables in Python</h3>
+        <p>
+          Variable ek container hota hai jisme hum data store karte hain. Jaise school me har student ka naam, age, roll number,
+          marks alag-alag hote hain. Agar hume ye data program me use karna hai, to hum variables banate hain. Variable ka naam
+          meaningful hona chahiye taaki code padhne wale ko samajh aaye ki is variable me kya store hai.
+        </p>
+        <p>
+          Example ke liye, agar hum <code>student_name = "Rahul"</code> likhte hain, to <code>student_name</code> variable ka naam hai aur
+          <code>"Rahul"</code> uski value hai. Equal sign ka matlab mathematics wala equal nahi hota. Programming me <code>=</code>
+          assignment operator hai. Iska matlab hota hai right side ki value ko left side wale variable me store kar do.
+        </p>
+      </article>
+
+      <article class="card practice">
+        <h3>Practice Code 2 - Variables and Student Information</h3>
+        <p>
+          Is practical me hum ek student ka basic profile store karenge. Ye real-world example hai kyunki school, college, coaching,
+          attendance system, and result management system me student details variables me hi store hoti hain.
+        </p>
+        <span class="code-title">Python Code</span>
+        <pre><code>student_name = "Aman"
+student_age = 18
+course_name = "Python for Data Science"
+city = "Hyderabad"
+
+print("Student Name:", student_name)
+print("Student Age:", student_age)
+print("Course Name:", course_name)
+print("City:", city)</code></pre>
+        <h4>Output</h4>
+        <div class="output">Student Name: Aman
+Student Age: 18
+Course Name: Python for Data Science
+City: Hyderabad</div>
+        <h4>Detailed Code Explanation</h4>
+        <table>
+          <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>student_name = "Aman"</code></td><td>Is line me <code>student_name</code> naam ka variable banaya gaya hai. Is variable me <code>"Aman"</code> value store ki gayi hai. Double quotes ke andar value likhi hai, isliye ye string data type hai. Variable ka naam meaningful hai, isliye padhte hi samajh aa raha hai ki isme student ka naam store hai.</td></tr>
+            <tr><td>2</td><td><code>student_age = 18</code></td><td>Yahan <code>student_age</code> variable me <code>18</code> store kiya gaya hai. <code>18</code> ke around quotes nahi hain, isliye Python isko number maanega. Ye integer data type hai. Age, marks, quantity, count jaise values ko mostly number ke form me store karte hain.</td></tr>
+            <tr><td>3</td><td><code>course_name = "Python for Data Science"</code></td><td>Is line me course ka naam store ho raha hai. Value text format me hai, isliye quotes use kiye gaye hain. Agar text value ke around quotes nahi denge to Python usko variable samajhne ki koshish karega aur error aa sakta hai.</td></tr>
+            <tr><td>4</td><td><code>city = "Hyderabad"</code></td><td>Yahan <code>city</code> variable me city ka naam store hai. Variable small hai but meaningful hai. Jab bhi personal details, address, city, state, country jaise text data store karna ho, string data type ka use hota hai.</td></tr>
+            <tr><td>6</td><td><code>print("Student Name:", student_name)</code></td><td>Ye line label ke saath student ka naam print karti hai. Comma ke left side text label hai, aur comma ke right side variable hai. Python pehle label print karta hai, phir variable ki actual value print karta hai. Isse output readable ban jaata hai.</td></tr>
+            <tr><td>7</td><td><code>print("Student Age:", student_age)</code></td><td>Is line me age print ho rahi hai. <code>student_age</code> variable ka naam print nahi hota, uske andar jo value store hai wo print hoti hai. Is concept ko samajhna important hai: variable ek naam hai, aur output me variable ki stored value show hoti hai.</td></tr>
+            <tr><td>8</td><td><code>print("Course Name:", course_name)</code></td><td>Ye line course ka naam print karti hai. Yahan label aur value dono output me clear dikhte hain. Real applications me output user-friendly banana important hota hai, isliye labels use karte hain.</td></tr>
+            <tr><td>9</td><td><code>print("City:", city)</code></td><td>Ye final line city print karti hai. Is complete program me humne data store bhi kiya aur display bhi kiya. Ye programming ka basic pattern hai: data lo, data store karo, data process karo, aur output show karo.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card concept">
+        <h3>6. Naming Rules in Python</h3>
+        <p>
+          Variable names ke liye kuch rules follow karne padte hain. Variable name letter ya underscore se start ho sakta hai, but number
+          se start nahi ho sakta. Variable name me space allowed nahi hota. Variable names case-sensitive hote hain, matlab <code>Name</code>
+          aur <code>name</code> Python ke liye different variables hain. Python keywords jaise <code>if</code>, <code>for</code>,
+          <code>while</code>, <code>class</code>, <code>def</code> ko variable name ke roop me use nahi karna chahiye.
+        </p>
+        <p>
+          Best practice ye hai ki variable names meaningful aur readable rakho. Example: <code>student_marks</code>, <code>total_price</code>,
+          <code>user_name</code>, <code>course_fee</code>. Aise names se code explain karna easy hota hai. Beginners ko random names jaise
+          <code>a</code>, <code>b</code>, <code>x</code>, <code>y</code> kam use karne chahiye, jab tak example very small na ho.
+        </p>
+        <table>
+          <thead><tr><th>Good Name</th><th>Bad Name</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td><code>student_name</code></td><td><code>student name</code></td><td>Space allowed nahi hota.</td></tr>
+            <tr><td><code>marks1</code></td><td><code>1marks</code></td><td>Number se start nahi kar sakte.</td></tr>
+            <tr><td><code>total_price</code></td><td><code>total-price</code></td><td>Hyphen minus operator samjha jaata hai.</td></tr>
+            <tr><td><code>course_fee</code></td><td><code>for</code></td><td><code>for</code> Python keyword hai.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card concept">
+        <h3>7. Data Types in Python</h3>
+        <p>
+          Data type batata hai ki variable me kis type ka data store hai. Python me common beginner data types hain:
+          <code>int</code>, <code>float</code>, <code>str</code>, and <code>bool</code>. <code>int</code> whole number ke liye hota hai,
+          jaise 10, 25, 100. <code>float</code> decimal number ke liye hota hai, jaise 10.5, 99.99, 78.25. <code>str</code> text ke
+          liye hota hai, jaise name, city, course. <code>bool</code> true/false value ke liye hota hai.
+        </p>
+        <p>
+          Data type samajhna bahut important hai kyunki operations data type ke hisaab se work karte hain. Agar do numbers add karoge
+          to mathematical addition hoga. Agar do strings join karoge to concatenation hoga. Agar input user se aata hai, to wo by default
+          string hota hai, isliye calculation se pehle type casting karni padti hai.
+        </p>
+      </article>
+
+      <article class="card practice">
+        <h3>Practice Code 3 - Data Types and type()</h3>
+        <p>
+          Is practical me hum different types ki values store karenge aur <code>type()</code> function se check karenge ki Python un values ko
+          kis data type ke roop me samajh raha hai.
+        </p>
+        <span class="code-title">Python Code</span>
+        <pre><code>student_name = "Priya"
+student_age = 20
+student_percentage = 87.5
+is_passed = True
+
+print(student_name, type(student_name))
+print(student_age, type(student_age))
+print(student_percentage, type(student_percentage))
+print(is_passed, type(is_passed))</code></pre>
+        <h4>Output</h4>
+        <div class="output">Priya &lt;class 'str'&gt;
+20 &lt;class 'int'&gt;
+87.5 &lt;class 'float'&gt;
+True &lt;class 'bool'&gt;</div>
+        <h4>Detailed Code Explanation</h4>
+        <table>
+          <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>student_name = "Priya"</code></td><td>Is line me text value store ho rahi hai. Text value ko Python me string bolte hain. String ke liye single quotes ya double quotes use kar sakte hain. Yahan double quotes use hue hain.</td></tr>
+            <tr><td>2</td><td><code>student_age = 20</code></td><td>Yahan whole number store hai, isliye iska data type integer hoga. Integer values counting, age, marks count, quantity, and IDs ke liye use hoti hain.</td></tr>
+            <tr><td>3</td><td><code>student_percentage = 87.5</code></td><td>Yahan decimal value store hai. Decimal value ko Python me float bolte hain. Percentage, price, temperature, weight, height jaise values me float use hota hai.</td></tr>
+            <tr><td>4</td><td><code>is_passed = True</code></td><td>Yahan boolean value store hai. Boolean me sirf two values hoti hain: <code>True</code> ya <code>False</code>. Dhyan rahe Python me <code>True</code> ka T capital hota hai. Boolean values conditions and decision making me use hoti hain.</td></tr>
+            <tr><td>6</td><td><code>print(student_name, type(student_name))</code></td><td>Ye line student name aur uska data type print karti hai. <code>type()</code> function value ka class/data type batata hai. Is output me <code>&lt;class 'str'&gt;</code> aata hai, matlab Python ne <code>student_name</code> ko string samjha.</td></tr>
+            <tr><td>7</td><td><code>print(student_age, type(student_age))</code></td><td>Is line me age aur age ka data type show hota hai. Output me <code>&lt;class 'int'&gt;</code> aata hai, jo batata hai ki age integer hai. Ye future calculations me use ho sakta hai.</td></tr>
+            <tr><td>8</td><td><code>print(student_percentage, type(student_percentage))</code></td><td>Ye line decimal value ka data type check karti hai. Output me <code>&lt;class 'float'&gt;</code> aata hai. Float values calculations me decimal precision ke liye important hoti hain.</td></tr>
+            <tr><td>9</td><td><code>print(is_passed, type(is_passed))</code></td><td>Ye line boolean value aur uska type print karti hai. Output me <code>&lt;class 'bool'&gt;</code> aata hai. Boolean values true/false decisions ke liye use hoti hain, jaise student pass hai ya fail.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card concept">
+        <h3>8. Type Casting</h3>
+        <p>
+          Type casting ka matlab hai ek data type ko dusre data type me convert karna. Example ke liye, user keyboard se age enter karta
+          hai. Python me <code>input()</code> se aane wali value by default string hoti hai. Agar hume age par calculation karni hai, to string ko
+          integer me convert karna padega. Is conversion ko type casting bolte hain.
+        </p>
+        <p>
+          Common type casting functions hain: <code>int()</code>, <code>float()</code>, <code>str()</code>, and <code>bool()</code>. <code>int()</code> value ko whole number me convert karta
+          hai, <code>float()</code> decimal number me convert karta hai, <code>str()</code> text me convert karta hai, aur <code>bool()</code> true/false form me convert
+          karta hai.
+        </p>
+      </article>
+
+      <article class="card practice">
+        <h3>Practice Code 4 - Input, Type Casting and Age Calculation</h3>
+        <p>
+          Is practical me user se name aur age lenge. Age input string ke form me aayega, phir hum usko integer me convert karenge aur
+          next year ki age calculate karenge.
+        </p>
+        <span class="code-title">Python Code</span>
+        <pre><code>name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+
+next_year_age = age + 1
+
+print("Hello", name)
+print("Your current age is", age)
+print("Next year your age will be", next_year_age)</code></pre>
+        <h4>Sample Output</h4>
+        <div class="output">Enter your name: Aman
+Enter your age: 18
+Hello Aman
+Your current age is 18
+Next year your age will be 19</div>
+        <h4>Detailed Code Explanation</h4>
+        <table>
+          <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>name = input("Enter your name: ")</code></td><td><code>input()</code> function user se keyboard ke through value leta hai. Brackets ke andar jo text likha hai wo prompt message hai, matlab user ko instruction show hoti hai. User jo bhi name enter karega, wo <code>name</code> variable me string ke form me store ho jayega.</td></tr>
+            <tr><td>2</td><td><code>age = int(input("Enter your age: "))</code></td><td>Is line me pehle <code>input()</code> user se age leta hai. Lekin input value by default string hoti hai. Isliye humne <code>int()</code> use kiya hai taaki age string se integer me convert ho jaye. Agar conversion nahi karenge to <code>age + 1</code> calculation properly work nahi karegi.</td></tr>
+            <tr><td>4</td><td><code>next_year_age = age + 1</code></td><td>Yahan calculation ho rahi hai. <code>age</code> variable me integer value hai, isliye usme <code>1</code> add karna possible hai. Result <code>next_year_age</code> variable me store ho raha hai. Ye simple real-life calculation ka example hai.</td></tr>
+            <tr><td>6</td><td><code>print("Hello", name)</code></td><td>Ye line greeting message print karti hai. Comma ke through string aur variable ko saath print kiya gaya hai. Output me <code>Hello</code> ke baad user ka actual name show hota hai.</td></tr>
+            <tr><td>7</td><td><code>print("Your current age is", age)</code></td><td>Ye line current age show karti hai. Isse user ko confirm hota hai ki program ne entered age correctly receive ki hai. Real programs me input confirmation user experience improve karta hai.</td></tr>
+            <tr><td>8</td><td><code>print("Next year your age will be", next_year_age)</code></td><td>Ye line calculated result show karti hai. Program ka final answer user ko readable sentence ke form me milta hai. Ye programming ka important pattern hai: input lo, process karo, result print karo.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card concept">
+        <h3>9. Input and Output Handling</h3>
+        <p>
+          Input ka matlab hai user se data lena, aur output ka matlab hai user ko result dikhana. Python me input ke liye <code>input()</code>
+          function use hota hai, aur output ke liye <code>print()</code> function use hota hai. Almost har beginner program input-process-output
+          pattern follow karta hai.
+        </p>
+        <p>
+          Example: marks calculator me student marks input karega, program total aur percentage calculate karega, aur final result print
+          karega. Bill calculator me user item price aur quantity enter karega, program total bill calculate karega, aur bill print karega.
+          Isi pattern se large applications bhi build hoti hain.
+        </p>
+      </article>
+
+      <article class="card concept">
+        <h3>10. Comments in Python</h3>
+        <p>
+          Comment code ka wo part hota hai jo Python execute nahi karta. Comments ka use code explain karne ke liye hota hai. Python me
+          single-line comment <code>#</code> se start hota hai. Jab Python interpreter <code>#</code> dekhta hai, to us line me <code>#</code> ke baad ka text ignore karta hai.
+        </p>
+        <p>
+          Comments beginners ke liye helpful hote hain kyunki comments se yaad rehta hai ki code ka purpose kya hai. Professional coding me
+          comments ka use tab karna chahiye jab logic thoda confusing ho ya explanation required ho. Har obvious line par comment likhna
+          zaroori nahi hota.
+        </p>
+        <span class="code-title">Comment Example</span>
+        <pre><code># This program prints a welcome message
+print("Welcome to Python class")</code></pre>
+      </article>
+
+      <article class="card concept">
+        <h3>11. Basic Python Syntax</h3>
+        <p>
+          Syntax ka matlab hai language ke rules. Jaise English me sentence banane ke rules hote hain, waise Python me code likhne ke rules
+          hote hain. Python syntax simple hai, lekin spaces, brackets, quotes, spelling, and indentation ka dhyan rakhna hota hai.
+        </p>
+        <p>
+          Python me strings quotes me likhi jaati hain, function call ke liye brackets use hote hain, variable assignment ke liye <code>=</code> use hota
+          hai, aur blocks ke liye indentation important hoti hai. Agar syntax mistake hogi to Python error dega. Error se darna nahi hai.
+          Error programming ka normal part hai. Error message ko read karke issue fix karna learning ka important part hai.
+        </p>
+      </article>
+    </section>
+
+    <section id="practicals">
+      <div class="section-title">
+        <h2>Complete Practical Section</h2>
+        <p>Ye practicals learners ko hands-on coding confidence dene ke liye hain.</p>
+      </div>
+
+      <article class="card practice">
+        <h3>Practice Code 5 - Simple Marks Calculator</h3>
+        <p>
+          Is practical me hum student ke three subject marks lenge, total marks calculate karenge, percentage calculate karenge, aur final
+          result print karenge. Ye program real-world result management system ka basic version hai.
+        </p>
+        <span class="code-title">Python Code</span>
+        <pre><code>student_name = input("Enter student name: ")
+python_marks = float(input("Enter Python marks: "))
+math_marks = float(input("Enter Math marks: "))
+english_marks = float(input("Enter English marks: "))
+
+total_marks = python_marks + math_marks + english_marks
+percentage = total_marks / 3
+
+print("----- Student Result -----")
+print("Name:", student_name)
+print("Total Marks:", total_marks)
+print("Percentage:", percentage)</code></pre>
+        <h4>Sample Output</h4>
+        <div class="output">Enter student name: Riya
+Enter Python marks: 90
+Enter Math marks: 85
+Enter English marks: 80
+----- Student Result -----
+Name: Riya
+Total Marks: 255.0
+Percentage: 85.0</div>
+        <h4>Detailed Code Explanation</h4>
+        <table>
+          <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>student_name = input("Enter student name: ")</code></td><td>Ye line student ka naam user se leti hai. <code>input()</code> screen par message show karta hai aur user ke type kiye hue text ko receive karta hai. Naam text value hoti hai, isliye yahan type casting ki zaroorat nahi hai.</td></tr>
+            <tr><td>2</td><td><code>python_marks = float(input("Enter Python marks: "))</code></td><td>Ye line Python subject ke marks leti hai. Marks decimal bhi ho sakte hain, jaise 87.5, isliye <code>float()</code> use kiya gaya hai. <code>input()</code> se value string me aati hai, aur <code>float()</code> usko decimal number me convert karta hai.</td></tr>
+            <tr><td>3</td><td><code>math_marks = float(input("Enter Math marks: "))</code></td><td>Is line me Math marks input hote hain. Same logic yahan bhi use ho raha hai. Variable ka naam <code>math_marks</code> clear batata hai ki isme Math subject ki value store hai.</td></tr>
+            <tr><td>4</td><td><code>english_marks = float(input("Enter English marks: "))</code></td><td>Ye line English marks input leti hai. Teeno marks float type me hain, isliye calculation accurate rahegi even agar decimal marks enter kiye gaye ho.</td></tr>
+            <tr><td>6</td><td><code>total_marks = python_marks + math_marks + english_marks</code></td><td>Yahan teeno subjects ke marks add ho rahe hain. Result <code>total_marks</code> variable me store hota hai. Ye processing step hai, jahan input data ko use karke new result create kiya ja raha hai.</td></tr>
+            <tr><td>7</td><td><code>percentage = total_marks / 3</code></td><td>Percentage calculate karne ke liye total marks ko subjects ki count se divide kiya gaya hai. Yahan 3 subjects hain, isliye divide by 3 kiya gaya. <code>/</code> operator division ke liye use hota hai.</td></tr>
+            <tr><td>9</td><td><code>print("----- Student Result -----")</code></td><td>Ye line output me heading print karti hai. Heading se result section clean aur readable lagta hai. Real applications me readable output bahut important hota hai.</td></tr>
+            <tr><td>10</td><td><code>print("Name:", student_name)</code></td><td>Ye line student ka naam print karti hai. Label <code>Name:</code> output ko understandable banata hai. Agar label nahi hoga to user ko samajhna mushkil ho sakta hai ki value kis cheez ki hai.</td></tr>
+            <tr><td>11</td><td><code>print("Total Marks:", total_marks)</code></td><td>Ye line total marks show karti hai. <code>total_marks</code> variable me jo calculated value store hai, wahi screen par print hoti hai. Ye input ke baad processing ka result hai.</td></tr>
+            <tr><td>12</td><td><code>print("Percentage:", percentage)</code></td><td>Ye line final percentage print karti hai. Is program me learners ko variables, input, type casting, arithmetic calculation, and output handling ek saath practice milti hai.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card practice">
+        <h3>Practice Code 6 - Shopping Bill Calculator</h3>
+        <p>
+          Is practical me hum ek item ka name, price, quantity input lenge aur total bill calculate karenge. Ye example shops, restaurants,
+          billing software, and e-commerce websites me use hone wale basic logic ko explain karta hai.
+        </p>
+        <span class="code-title">Python Code</span>
+        <pre><code>item_name = input("Enter item name: ")
+item_price = float(input("Enter item price: "))
+quantity = int(input("Enter quantity: "))
+
+total_bill = item_price * quantity
+
+print("----- Bill Details -----")
+print("Item:", item_name)
+print("Price:", item_price)
+print("Quantity:", quantity)
+print("Total Bill:", total_bill)</code></pre>
+        <h4>Sample Output</h4>
+        <div class="output">Enter item name: Notebook
+Enter item price: 45.5
+Enter quantity: 4
+----- Bill Details -----
+Item: Notebook
+Price: 45.5
+Quantity: 4
+Total Bill: 182.0</div>
+        <h4>Detailed Code Explanation</h4>
+        <table>
+          <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>item_name = input("Enter item name: ")</code></td><td>Ye line item ka naam input leti hai. Item name text hota hai, jaise Notebook, Pen, Bag. Isliye value string ke form me store hoti hai. Yahan type casting required nahi hai.</td></tr>
+            <tr><td>2</td><td><code>item_price = float(input("Enter item price: "))</code></td><td>Ye line item price input leti hai. Price decimal ho sakta hai, jaise 45.5 ya 99.99, isliye <code>float()</code> use kiya gaya hai. Billing systems me price ko decimal handle karna important hota hai.</td></tr>
+            <tr><td>3</td><td><code>quantity = int(input("Enter quantity: "))</code></td><td>Ye line item quantity input leti hai. Quantity normally whole number hoti hai, jaise 1, 2, 5, 10. Isliye <code>int()</code> use kiya gaya hai. Agar input ko integer me convert nahi karenge to multiplication issue de sakta hai.</td></tr>
+            <tr><td>5</td><td><code>total_bill = item_price * quantity</code></td><td>Yahan bill calculation ho rahi hai. <code>*</code> multiplication operator hai. Item price ko quantity se multiply karke total bill nikalta hai. Result <code>total_bill</code> variable me store hota hai.</td></tr>
+            <tr><td>7</td><td><code>print("----- Bill Details -----")</code></td><td>Ye line bill section ki heading print karti hai. Heading se output organized lagta hai. User ko clearly samajh aata hai ki ab bill details show ho rahi hain.</td></tr>
+            <tr><td>8</td><td><code>print("Item:", item_name)</code></td><td>Ye line item name print karti hai. Label ke saath value print karna good practice hai. Isse output professional aur readable banta hai.</td></tr>
+            <tr><td>9</td><td><code>print("Price:", item_price)</code></td><td>Ye line item price show karti hai. <code>item_price</code> variable me float value store hai, isliye output decimal ke saath aa sakta hai.</td></tr>
+            <tr><td>10</td><td><code>print("Quantity:", quantity)</code></td><td>Ye line purchased quantity print karti hai. Quantity integer hai, aur bill calculation me directly use hui hai. Ye real billing flow ka basic part hai.</td></tr>
+            <tr><td>11</td><td><code>print("Total Bill:", total_bill)</code></td><td>Ye final calculated bill print karti hai. Program ka main output yahi hai. Learners ko yahan samjhana hai ki programming mostly real-world calculations ko automate karne ke liye use hoti hai.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card story">
+        <h3>Classroom Explanation: Input-Process-Output Model</h3>
+        <p>
+          Ab learners ko ek simple model samjhao: har program me mostly three steps hote hain. First step input hota hai, jahan user ya system
+          se data aata hai. Second step processing hota hai, jahan program data par calculation ya logic apply karta hai. Third step output
+          hota hai, jahan final result user ko show kiya jata hai.
+        </p>
+        <p>
+          Marks calculator me input marks hain, process total aur percentage calculation hai, output result hai. Bill calculator me input item
+          details hain, process multiplication hai, output total bill hai. Isi basic pattern se future me data science me dataset load karna,
+          data clean karna, model train karna, aur prediction output nikalna samjhenge.
+        </p>
+      </article>
+    </section>
+
+    <section id="homework">
+      <div class="section-title">
+        <h2>Student Practice Tasks</h2>
+        <p>In tasks ko learners ko khud type karne ke liye dena hai. Copy-paste nahi, typing practice important hai.</p>
+      </div>
+      <div class="card">
+        <h3>Task 1 - Personal Introduction Program</h3>
+        <p>Ek program banao jo user se name, age, city, and course input le. Phir output me ek clean introduction print kare. Example: <code>My name is Aman. I am 18 years old. I live in Hyderabad. I am learning Python.</code></p>
+      </div>
+      <div class="card">
+        <h3>Task 2 - Simple Area Calculator</h3>
+        <p>User se rectangle ki length aur width input lo. Dono values ko float me convert karo. Area calculate karo using formula <code>area = length * width</code>. Final output readable sentence me print karo.</p>
+      </div>
+      <div class="card">
+        <h3>Task 3 - Temperature Converter</h3>
+        <p>User se Celsius temperature input lo. Fahrenheit calculate karo using formula <code>fahrenheit = (celsius * 9 / 5) + 32</code>. Output me Celsius aur Fahrenheit dono values show karo.</p>
+      </div>
+      <div class="card teacher">
+        <h3>Final Closing Script</h3>
+        <p>
+          Aaj humne programming ka meaning samjha, Python ka introduction dekha, interpreter ka role samjha, first Python program run kiya,
+          variables banaye, naming rules samjhe, data types check kiye, input-output handle kiya, type casting use ki, comments samjhe, aur
+          real practical programs banaye. Ye foundation future ke har Python topic me use hoga. Agar aapko variables, data types, input,
+          output, aur basic calculation samajh aa gaya, to aap Python journey ke liye ready ho.
+        </p>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
