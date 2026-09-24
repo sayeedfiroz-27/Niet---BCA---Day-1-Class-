@@ -6,7 +6,6 @@ Simple Hinglish GitHub Pages notes for Python beginners. The main page is writte
 
 - `index.html` - Complete GitHub Pages teaching document with theory, 2-3 examples per major topic, practical code, sample output, detailed code explanation, recap, and student tasks.
 - `direct-reading-notes.html` - Direct paragraph-by-paragraph class reading notes in natural Hinglish.
-- `teacher-delivery-notes.html` - Additional 5-hour delivery notes from the older version.
 - `learners-notes.html` - Simple English learner notes in paragraph format with code examples and practice tasks.
 - `examples/day1_practice.py` - Runnable Python practice file used in the lesson.
 - `examples/day1_student_profile.py` - Extra interesting practical for the 5-hour session.
