@@ -1,10 +1,10 @@
 # Python Day 1 & 2 - Programming Basics and Python Fundamentals
 
-Classroom-ready simple Hinglish GitHub Pages notes for Python beginners. The main page is written in paragraph format so a trainer can directly read and explain it in class. It covers programming basics, Python introduction, interpreter basics, first Python program, variables, naming rules, data types, type casting, input/output, comments, syntax, and practical coding examples with detailed line-by-line explanation.
+Classroom-ready simple Hinglish GitHub Pages notes for Python beginners. The main page is written in paragraph format so a trainer can directly read and explain it in class. It covers programming basics, Python introduction, interpreter basics, first Python program, variables, naming rules, data types, type casting, input/output, comments, syntax, and practical coding examples with detailed line-by-line explanation. The page is expanded topic-by-topic with 24 small examples and 3 project-style practices.
 
 ## Files
 
-- `index.html` - Complete GitHub Pages teaching document with theory, practical code, sample output, detailed code explanation, recap, and student tasks.
+- `index.html` - Complete GitHub Pages teaching document with theory, 2-3 examples per major topic, practical code, sample output, detailed code explanation, recap, and student tasks.
 - `direct-reading-notes.html` - Direct paragraph-by-paragraph class reading notes in natural Hinglish.
 - `teacher-delivery-notes.html` - Polished 5-hour teacher delivery notes written in natural Hinglish speaking style.
 - `learners-notes.html` - Simple English learner notes in paragraph format with code examples and practice tasks.
